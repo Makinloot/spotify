@@ -1,0 +1,30 @@
+{
+  "name": "spotify-2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "sass": "cd src && sass --watch scss:css --style compressed",
+    "dev": "concurrently \"vite\" \"npm run sass\""
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "concurrently": "^7.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "spotify-web-api-js": "^1.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "sass": "^1.59.3",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}

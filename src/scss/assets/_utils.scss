@@ -1,0 +1,29 @@
+// containers
+.container {
+  width: 1955px;
+  max-width: 100%;
+  margin: 0 auto;
+  // padding: 1rem;
+}
+
+// flex classes
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  @extend %flex;
+}
+
+.flex-col {
+  @extend %flex;
+  flex-direction: column;
+}
+
+.box-shadow {
+  box-shadow: 10px 10px 13px -7px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 10px 10px 13px -7px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 10px 10px 13px -7px rgba(0, 0, 0, 0.8);
+}
