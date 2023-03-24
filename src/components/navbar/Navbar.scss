@@ -1,0 +1,42 @@
+@import '../../scss/assets/vars';
+
+.navbar {
+
+  margin: 2rem 0 1rem;
+
+  &-item {
+    font-size: $fs-small;
+    font-family: $ff-bold;
+    color: $clr-whiteFaded;
+    text-transform: capitalize;
+    transition: 350ms;
+
+    &:nth-of-type(4) {
+      margin-top: 1.5rem;
+    }
+
+    &.active {
+      color: $clr-white;
+    }
+    
+    &:hover {
+      color: $clr-white;
+    }
+
+    a {
+      justify-content: flex-start !important;
+      width: 100%;
+      padding: .6rem 0;
+    }
+
+    span {
+      margin-left: 1rem;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+  }
+}

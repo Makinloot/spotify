@@ -1,47 +1,47 @@
-
-import { useEffect, useState} from "react"
-import { Routes, Route } from 'react-router-dom'
-import { getTokenFromUrl } from "./config/spotify"
-import { useSpotify } from "./context/SpotifyContext"
-import SpotifyWebApi from "spotify-web-api-js"
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { getTokenFromUrl } from "./config/spotify";
+import { useSpotify } from "./context/SpotifyContext";
+import SpotifyWebApi from "spotify-web-api-js";
 
 // COMPONENTS
-import Login from "./pages/login/Login"
-import Header from "./components/header/Header"
+import Login from "./pages/login/Login";
+import Header from "./components/header/Header";
+import Aside from "./components/aside/Aside";
 
-export const spotify = new SpotifyWebApi()
+export const spotify = new SpotifyWebApi();
 function App() {
-
-  const [token, setToken] = useState<string>("")
-  const [user, setUser] = useState(null)
-  const { handleTest, handleCurrentUser } = useSpotify()
-
-  // handleTest('red ravici bat ragitxra aba')
+  const [token, setToken] = useState<string>("");
 
   useEffect(() => {
-    const hash = getTokenFromUrl()
-    const _token = hash.access_token
+    const hash = getTokenFromUrl();
+    const _token = hash.access_token;
 
-    if(_token) {
-      setToken(_token)
-      spotify.setAccessToken(_token)
+    if (_token) {
+      setToken(_token);
+      spotify.setAccessToken(_token);
     }
 
     // clear browser url
-    window.location.hash = ''
-  }, [])
+    window.location.hash = "";
+  }, []);
 
   return (
-    <div className="app">
+    <div className="container">
       {token ? 
-        <>
+        <div className="app">
           <Header />
-        </>
+          <Aside />
+        </div>
         :
         <Login />
       }
+      {/* <div className="app">
+        <Header username="shiet" />
+        <Aside />
+      </div> */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,22 @@
+@import '../../scss/assets/vars';
+
+.aside {
+  position: relative;
+  z-index: 100;
+  padding: 2rem;
+  background-color: $clr-black;
+  min-width: 312px;
+
+  &-logo {
+    display: block;
+    max-width: 131px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  hr {
+    border: 1px solid $clr-darkGrey;
+  }
+}
