@@ -1,0 +1,17 @@
+@import '/src/scss/assets/vars';
+
+%btn {
+  border: none;
+  outline: none;
+  color: $clr-white;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.btn-green {
+  @extend %btn;
+  padding: 1rem 2rem;
+  font-size: $fs-big;
+  background-color: $clr-green;
+  border-radius: 4rem;
+}
