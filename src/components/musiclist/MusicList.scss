@@ -1,0 +1,112 @@
+@import "../../scss/assets/vars";
+
+.music-list {
+  position: relative;
+  padding: 0 1rem;
+  width: 100%;
+  margin: 0 auto;
+
+  &.hidden {
+
+    hr {
+      display: none;
+    }
+
+    .music-list-headings {
+      display: none;
+    }
+  }
+
+  hr {
+    position: absolute;
+    width: 100%;
+    top: 2rem;
+    left: 0;
+    border: 1px solid $clr-whiteFaded;
+  }
+
+  &-headings {
+    display: grid;
+    grid-template-columns: 2% 38% 30% 15% 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+    color: $clr-whiteFaded;
+    text-transform: capitalize;
+    font-family: $ff-bold;
+    font-size: $fs-small;
+    white-space: nowrap;
+  }
+
+  &-wrapper {
+    padding: 3rem 0;
+
+    .music-list-item {
+      padding: 0.5rem 1rem;
+      display: grid;
+      grid-template-columns: 2% 38% 30% 15% 1fr;
+      align-items: center;
+      gap: 1rem;
+      border-radius: 4px;
+  
+      &:hover {
+        background-color: $clr-greyFaded;
+  
+        .position {
+          div {
+            display: none;
+          }
+  
+          svg {
+            display: block;
+          }
+        }
+      }
+  
+      .title {
+        justify-content: flex-start;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-right: 1rem;
+  
+        img {
+          margin-right: 1rem;
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+        }
+  
+        .name-band {
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 0.5rem;
+          height: 100%;
+          text-transform: capitalize;
+          font-size: $fs-small;
+          font-family: $ff-bold;
+  
+          div:last-of-type {
+            color: $clr-whiteFaded;
+            font-family: $ff-regular;
+          }
+        }
+      }
+  
+      .position {
+        svg {
+          display: none;
+        }
+      }
+  
+      .album,
+      .added,
+      .duration {
+        margin-right: 1rem;
+        font-size: $fs-small;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+}

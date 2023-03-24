@@ -8,6 +8,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import Login from "./pages/login/Login";
 import Header from "./components/header/Header";
 import Aside from "./components/aside/Aside";
+import Liked from "./pages/liked/Liked";
 
 export const spotify = new SpotifyWebApi();
 function App() {
@@ -32,6 +33,9 @@ function App() {
         <div className="app">
           <Header />
           <Aside />
+          <Routes>
+            <Route path="/liked" element={<Liked />} />
+          </Routes>
         </div>
         :
         <Login />
