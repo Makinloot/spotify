@@ -4,7 +4,7 @@ import defaultPlaylistImg from "../../assets/default-playlist.png";
 
 import "./MusicList.scss";
 
-const MusicList = ({ data, header }: { data: SpotifyApi.SavedTrackObject[] | null, header?: boolean }) => {
+const MusicList = ({ data, header }: { data: SpotifyApi.SavedTrackObject[] | SpotifyApi.PlaylistTrackObject[] | null, header?: boolean }) => {
 
   // convert date
   const handleDate = (date: string) => {

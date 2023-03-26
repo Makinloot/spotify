@@ -1,0 +1,68 @@
+@import '/src/scss/assets/vars';
+
+.card {
+  position: relative;
+  display: block;
+  padding: 1rem;
+  font-size: $fs-small;
+  text-transform: capitalize;
+  border-radius: 4px;
+  transition: .3s;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    background-color: $clr-darkGrey;
+
+    .card-hover {
+      opacity: 1;
+      transition: 1s;
+    }
+  }
+
+  &-img {
+    display: block;
+    width: 171px;
+    max-width: 100%;
+    border-radius: 4px;
+
+    &.round {
+      border-radius: 50%;
+    }
+  }
+
+  &-title {
+    display: block;
+    margin: .8rem 0 .3rem 0;
+    font-family: $ff-bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+  }
+
+  &-undertext {
+    font-size: calc($fs-small - 2px);
+    color: $clr-whiteFaded;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-hover {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    background-color: $clr-green;
+    border-radius: 50%;
+    font-size: calc($fs-big - .4rem);
+    color: $clr-black;
+    opacity: 0;
+  }
+}

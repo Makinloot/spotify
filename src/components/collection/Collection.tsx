@@ -10,7 +10,7 @@ import CollectionHeader from "../collectionHeader/CollectionHeader";
 import "./Collection.scss";
 
 const Collection: React.FC<{
-  data: SpotifyApi.SavedTrackObject[] | null;
+  data: SpotifyApi.SavedTrackObject[] | SpotifyApi.PlaylistTrackObject[] | null;
 }> = ({ data }) => {
 
   useEffect(() => {

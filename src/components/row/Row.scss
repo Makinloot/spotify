@@ -1,0 +1,32 @@
+@import "../../scss/assets/vars";
+
+.row {
+  padding: 2rem;
+
+  .rows {
+    width: 100%;
+    justify-content: space-between !important;
+    gap: .5rem;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 265px;
+  }
+
+  &-title {
+    margin: 1rem 0;
+    font-size: $fs-big;
+    font-family: $ff-bold;
+    text-transform: capitalize;
+  }
+
+  .show-more {
+    font-size: $fs-small;
+    text-transform: capitalize;
+    font-family: $ff-bold;
+    color: $clr-whiteFaded;
+
+    &:hover {
+      color: $clr-white;
+    }
+  }
+}

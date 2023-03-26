@@ -9,6 +9,8 @@ import Login from "./pages/login/Login";
 import Header from "./components/header/Header";
 import Aside from "./components/aside/Aside";
 import Liked from "./pages/liked/Liked";
+import UserPlaylist from "./pages/saved-playlists/UserPlaylist";
+import Home from "./pages/home/Home";
 
 export const spotify = new SpotifyWebApi();
 function App() {
@@ -34,7 +36,9 @@ function App() {
           <Header />
           <Aside />
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/liked" element={<Liked />} />
+            <Route path="/playlist/:id" element={<UserPlaylist />} />
           </Routes>
         </div>
         :

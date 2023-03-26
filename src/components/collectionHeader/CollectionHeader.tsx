@@ -8,7 +8,7 @@ interface CollectionProps {
   type: string;
   name: string;
   ownerImage: string;
-  ownerName: string;
+  ownerName: string | undefined;
   totalSongs?: number;
 }
 
