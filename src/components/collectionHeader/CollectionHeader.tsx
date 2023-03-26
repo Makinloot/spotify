@@ -7,9 +7,11 @@ interface CollectionProps {
   image: string;
   type: string;
   name: string;
-  ownerImage: string;
-  ownerName: string | undefined;
+  ownerImage?: string;
+  ownerName?: string | undefined;
   totalSongs?: number;
+  followers?: string
+  following?: number
 }
 
 const CollectionHeader: React.FC<CollectionProps> = ({
@@ -19,23 +21,29 @@ const CollectionHeader: React.FC<CollectionProps> = ({
   ownerImage,
   ownerName,
   totalSongs,
+  followers,
+  following,
 }) => {
 
   return (
     <div className="collection-header">
-      <div className="img flex-row">
+      <div className={type === 'profile' ? "img flex-row round" : "img flex-row"}>
         <img src={image || defaultPlaylistImg} />
       </div>
       <div className="collection-header-details flex-col">
         <div className="type">{type}</div>
         <div className="collection-name">{name}</div>
         <div className="collection-header-user-details flex-row">
-          <span className="collection-user-img flex-row">
-            <img src={ownerImage || defaultPlaylistImg} />
-          </span>
+          {!followers &&
+            <span className="collection-user-img flex-row">
+              <img src={ownerImage || defaultPlaylistImg} />
+            </span>
+          }
           <span>{ownerName} </span>
-          <span>•</span>
-          <span>{totalSongs && totalSongs} songs</span>
+          {/* <span>•</span> */}
+          {followers && <span>{` • ${followers} Follower`}</span> }
+          {following && <span>{` • ${following} Following`}</span> }
+          {totalSongs && <span>{` • ${totalSongs} songs`}</span>}
         </div>
       </div>
     </div>

@@ -11,10 +11,12 @@ import Aside from "./components/aside/Aside";
 import Liked from "./pages/liked/Liked";
 import UserPlaylist from "./pages/saved-playlists/UserPlaylist";
 import Home from "./pages/home/Home";
+import Profile from "./pages/profile/Profile";
 
 export const spotify = new SpotifyWebApi();
 function App() {
   const [token, setToken] = useState<string>("");
+  const { currentUser } = useSpotify()
 
   useEffect(() => {
     const hash = getTokenFromUrl();
@@ -33,12 +35,13 @@ function App() {
     <div className="container">
       {token ? 
         <div className="app">
-          <Header />
+          <Header username={currentUser && currentUser.display_name} />
           <Aside />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/liked" element={<Liked />} />
             <Route path="/playlist/:id" element={<UserPlaylist />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
         :

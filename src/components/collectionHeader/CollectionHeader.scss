@@ -11,9 +11,19 @@
   );
 
   .img {
-    max-width: 232px;
+    position: relative;
+    width: 232px;
+    height: 232px;
+    max-width: 100%;
+
+    &.round {
+      border-radius: 50%;
+      overflow: hidden;
+    }
 
     img {
+      position: absolute;
+      height: 100%;
       width: 100%;
     }
   }

@@ -3,53 +3,54 @@ import { faPlay, faClock } from "@fortawesome/free-solid-svg-icons";
 import defaultPlaylistImg from "../../assets/default-playlist.png";
 
 import "./MusicList.scss";
+import MusicListItem from "./MusicListItem";
 
-const MusicList = ({ data, header }: { data: SpotifyApi.SavedTrackObject[] | SpotifyApi.PlaylistTrackObject[] | null, header?: boolean }) => {
-
-  // convert date
-  const handleDate = (date: string) => {
-    const dateString = date;
-    const dateObj = new Date(dateString)
-    const year = dateObj.getFullYear()
-    const month = dateObj.toLocaleString('default', { month: 'short'})
-    const day = dateObj.getDate()
-    const convertedDate = `${month} ${day}, ${year}`
-    return convertedDate
-  }
-
-  // convert music duration
-  const handleDuration = (ms: number) => {
-    const seconds = Math.floor(ms / 1000)
-    const minutes = Math.floor(seconds / 60)
-    const remainingSeconds = seconds % 60
-    const duration = `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
-    return duration
-  }
-
-  const handleData = (data: any[]) => {
+const MusicList: React.FC<{
+  data?:
+    | SpotifyApi.SavedTrackObject[]
+    | SpotifyApi.PlaylistTrackObject[]
+    | null;
+  header?: boolean;
+  topTracks?: SpotifyApi.TrackObjectFull[] | null;
+}> = ({ data, topTracks, header }) => {
+  function handleData(data: any[]) {
     const mapData = data.map((item, i) => {
-      const { track } = item;
+      const { id, album, name, artists, duration_ms } = item.track;
       return (
-        <div className="music-list-item" key={track.id}>
-          <div className="position flex-row">
-            <div>{i + 1}</div>
-            <FontAwesomeIcon icon={faPlay} />
-          </div>
-          <div className="title flex-row">
-            <img src={track.album.images[0].url || defaultPlaylistImg} />
-            <div className="name-band flex-col">
-              <div>{track.name}</div>
-              <div>{track.artists[0].name}</div>
-            </div>
-          </div>
-          <div className="album">{track.album.name}</div>
-          <div className="added">{handleDate(item.added_at)}</div>
-          <div className="duration">{handleDuration(track.duration_ms)}</div>
-        </div>
+        <MusicListItem
+          key={id}
+          index={i}
+          img={album.images[0].url}
+          name={name}
+          artistName={artists[0].name}
+          albumName={album.name}
+          added_at={item.added_at}
+          duration_ms={duration_ms}
+        />
       );
     });
+    
     return mapData;
-  };
+  }
+
+  function handleTopTracks(data: SpotifyApi.TrackObjectFull[]) {
+    const topTracks = data.map((item, i) => {
+      const { id, album, name, artists, duration_ms } = item;
+      return (
+        <MusicListItem
+          key={id}
+          index={i}
+          img={album.images[0].url}
+          albumName={album.name}
+          artistName={artists[0].name}
+          name={name}
+          duration_ms={duration_ms}
+        />
+      );
+    });
+
+    return topTracks;
+  }
 
   return (
     <>
@@ -60,11 +61,12 @@ const MusicList = ({ data, header }: { data: SpotifyApi.SavedTrackObject[] | Spo
           <span>title</span>
           <span>album</span>
           <span>date added</span>
-          <span><FontAwesomeIcon icon={faClock} /></span>
+          <span>
+            <FontAwesomeIcon icon={faClock} />
+          </span>
         </div>
-        <div className="music-list-wrapper">
-          {data && handleData(data)}
-        </div>
+        {data && <div className="music-list-wrapper">{handleData(data)}</div>}
+        {topTracks && <div className="music-list-wrapper">{handleTopTracks(topTracks)}</div>}
       </div>
     </>
   );

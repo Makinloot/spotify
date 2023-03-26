@@ -1,11 +1,7 @@
 import React, { useContext, useState, useEffect, useReducer, ReactNode } from 'react'
 import SpotifyWebApi from 'spotify-web-api-js'
 
-interface ContextTypes {
-  currentUser: SpotifyApi.CurrentUsersProfileResponse | null
-}
-
-const Context = React.createContext<ContextTypes | null>(null)
+const Context = React.createContext<any>(null)
 
 export function useSpotify() {
   return useContext(Context)

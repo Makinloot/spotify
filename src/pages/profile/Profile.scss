@@ -1,0 +1,15 @@
+@import '../../scss/assets/vars';
+
+.profile {
+
+  h3 {
+    margin: 1rem 0;
+    font-size: $fs-big;
+    font-family: $ff-bold;
+    text-transform: capitalize;
+  }
+
+  &-top-tracks {
+    padding: 2rem;
+  }
+}
