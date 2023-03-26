@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
+import { spotify } from "../../App";
 import { Link } from "react-router-dom";
 
-const spotify = new SpotifyWebApi();
 
 import "./Playlists.scss";
 

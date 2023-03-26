@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
-import SpotifyWebApi from "spotify-web-api-js"
-import { useSpotify } from "../../context/SpotifyContext"
+import { spotify } from "../../App"
 
 import Row from "../../components/row/Row"
+import Welcome from "../../components/welcome/Welcome"
 
-const spotify = new SpotifyWebApi()
 const Home = () => {
   const [ artists, setArtists ] = useState<SpotifyApi.ArtistObjectFull[] | null>(null)
   const [recentlyPlayed, setRecentlyPlayed] = useState<SpotifyApi.TrackObjectFull[] | null>(null)
@@ -23,6 +22,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Welcome />
       <Row artists={artists && artists} title="your favourite artists" />
       <Row data={recentlyPlayed && recentlyPlayed} title="recently played" />
     </div>

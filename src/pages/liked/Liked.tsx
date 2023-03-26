@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import SpotifyWebApi from "spotify-web-api-js";
 import { useSpotify } from "../../context/SpotifyContext";
+import { spotify } from "../../App";
 
 import Collection from "../../components/collection/Collection";
 import CollectionHeader from "../../components/collectionHeader/CollectionHeader";
 
 import likedPlaylistImg from "../../assets/liked-playlist.png";
-
-const spotify = new SpotifyWebApi();
 
 const Liked = () => {
   const { currentUser } = useSpotify();

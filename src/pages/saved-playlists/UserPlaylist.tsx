@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SpotifyWebApi from "spotify-web-api-js";
+import { spotify } from "../../App";
 
 import Collection from "../../components/collection/Collection";
 import CollectionHeader from "../../components/collectionHeader/CollectionHeader";
 
 import "./UserPlaylist.scss";
 
-const spotify = new SpotifyWebApi();
 const UserPlaylist = () => {
   const { id } = useParams();
   const [playlist, setPlaylist] =

@@ -11,6 +11,41 @@
   cursor: pointer;
   overflow: hidden;
 
+  &.long {
+    display: flex;
+    justify-content: flex-start !important;
+    // display: grid;
+    // grid-template-columns: .2fr .8fr;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: $clr-greyFaded;
+
+    &:hover {
+      background-color: #7e7e7ead;
+    }
+
+    .card-img {
+      width: 80px;
+      border-radius: 0;
+    }
+
+    .card-title {
+      max-width: 100%;
+      margin-left: 1rem;
+    }
+
+    .card-undertext {
+      display: none;
+    }
+
+    .card-hover {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+  }
+
   &:hover {
     background-color: $clr-darkGrey;
 
