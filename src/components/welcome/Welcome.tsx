@@ -11,9 +11,9 @@ const Welcome = () => {
   function handleWelcomeRows() {
     if(data) {
       const tracks = data.map(track => {
-        const { name, album } = track
+        const { name, album, id } = track
 
-        return <Card title={name} img={album.images[0].url}  long />
+        return <Card key={id} title={name} img={album.images[0].url} long />
       }).slice(0, 6)
 
       return tracks

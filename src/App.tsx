@@ -35,7 +35,7 @@ function App() {
     <div className="container">
       {token ? 
         <div className="app">
-          <Header username={currentUser && currentUser.display_name} />
+          {currentUser && <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />}
           <Aside />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -47,10 +47,6 @@ function App() {
         :
         <Login />
       }
-      {/* <div className="app">
-        <Header username="shiet" />
-        <Aside />
-      </div> */}
     </div>
   );
 }

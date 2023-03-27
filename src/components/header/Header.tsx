@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-import testUser from '../../assets/liked-playlist.png';
+import testUser from "../../assets/liked-playlist.png";
 
 import "./Header.scss";
 
 const Header: React.FC<{
   username: string;
-}> = ({ username }) => {
+  userImg: string;
+  search?: boolean
+}> = ({ username, userImg, search }) => {
   const [showHeader, setShowHeader] = useState<boolean>(false);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -26,9 +28,16 @@ const Header: React.FC<{
   };
 
   // close user menu by clicking outside
-  const handleMenuListener = (e: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(e.target as HTMLDivElement))
+  const handleMenuListener = (e: any) => {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(e.target as HTMLDivElement)
+    )
       setShowMenu(false);
+    else if (menuRef.current && e.target!.localName === "a")
+      setTimeout(() => {
+        setShowMenu(false);
+      }, 100);
   };
 
   useEffect(() => {
@@ -48,10 +57,16 @@ const Header: React.FC<{
         ref={menuRef}
       >
         <div className="header-user-img flex-row">
-          <img src={testUser} alt="user icon" />
+          <img src={userImg || testUser} alt="user icon" />
         </div>
-        <div className="header-user-name">{username || 'default'}</div>
-        <div className={showMenu ? "header-user-arrow rotated flex-row" : "header-user-arrow flex-row"}>
+        <div className="header-user-name">{username || "default"}</div>
+        <div
+          className={
+            showMenu
+              ? "header-user-arrow rotated flex-row"
+              : "header-user-arrow flex-row"
+          }
+        >
           <FontAwesomeIcon icon={faSortDown} />
         </div>
         <nav
