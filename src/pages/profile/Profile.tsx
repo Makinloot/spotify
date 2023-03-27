@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import { useSpotify } from "../../context/SpotifyContext";
 import { spotify } from "../../App";
 
 import CollectionHeader from "../../components/collectionHeader/CollectionHeader";
-import "./Profile.scss";
-import { useEffect, useState } from "react";
 import Row from "../../components/row/Row";
 import MusicList from "../../components/musiclist/MusicList";
+import Header from "../../components/header/Header";
+import "./Profile.scss";
 
 const Profile = () => {
   const { currentUser } = useSpotify();
@@ -22,13 +23,16 @@ const Profile = () => {
   return (
     <div className="profile">
       {currentUser && (
-        <CollectionHeader
-          type="profile"
-          name={currentUser.display_name}
-          followers={currentUser.followers.total}
-          following={following && following?.artists.total}
-          image={currentUser.images[0].url}
-        />
+        <>
+          <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />      
+          <CollectionHeader
+            type="profile"
+            name={currentUser.display_name}
+            followers={currentUser.followers.total}
+            following={following && following?.artists.total}
+            image={currentUser.images[0].url}
+          />
+        </>
       )}
       <Row title="top artists this month" artists={artists} />
       <div className="profile-top-tracks">

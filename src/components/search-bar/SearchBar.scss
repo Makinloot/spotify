@@ -1,0 +1,34 @@
+@import '../../scss/assets/vars';
+
+.search-bar {
+  padding: .4rem;
+  border-radius: 4rem;
+  background-color: $clr-white;
+
+  input[type=text] {
+    padding: 4px 6px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 304px;
+    max-width: 100%;
+  }
+
+  input[type=submit] {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  ::placeholder {
+    color: $clr-darkGrey;
+    font-size: calc($fs-small - .1rem);
+    font-family: $ff-regular;
+    text-align: left;
+  }
+
+  svg {
+    color: $clr-black;
+    font-size: calc($fs-big - .2rem);
+  }
+}

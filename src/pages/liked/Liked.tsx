@@ -4,6 +4,7 @@ import { spotify } from "../../App";
 
 import Collection from "../../components/collection/Collection";
 import CollectionHeader from "../../components/collectionHeader/CollectionHeader";
+import Header from "../../components/header/Header";
 
 import likedPlaylistImg from "../../assets/liked-playlist.png";
 
@@ -21,6 +22,7 @@ const Liked = () => {
 
   return (
     <div className="liked">
+      {currentUser && <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />}
       <CollectionHeader
         type="playlist"
         name="Liked Songs"

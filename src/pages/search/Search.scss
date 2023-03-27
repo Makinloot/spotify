@@ -1,0 +1,29 @@
+@import '../../scss/assets/vars';
+
+.search {
+  padding: 5rem 2rem 2rem;
+
+  &-title {
+    margin: 1rem 0;
+    font-size: $fs-big;
+    font-family: $ff-bold;
+    text-transform: capitalize;
+  }
+  
+  &-categories {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+
+    @media (max-width: 1700px) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

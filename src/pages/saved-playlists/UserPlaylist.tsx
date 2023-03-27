@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { spotify } from "../../App";
+import { useSpotify } from "../../context/SpotifyContext";
 
 import Collection from "../../components/collection/Collection";
 import CollectionHeader from "../../components/collectionHeader/CollectionHeader";
 
 import "./UserPlaylist.scss";
+import Header from "../../components/header/Header";
 
 const UserPlaylist = () => {
   const { id } = useParams();
   const [playlist, setPlaylist] =
     useState<SpotifyApi.SinglePlaylistResponse | null>(null);
   const [ownerImage, setOwnerImage] = useState<string>("");
+  const { currentUser } = useSpotify()
+
+  // get playlist owner image
+  function handleOwnerImage(id: string) {
+    spotify.getUser(id).then((user) => {
+      if (user.images) setOwnerImage(user.images[0].url);
+    });
+  }
 
   useEffect(() => {
     if (id) {
@@ -21,13 +31,6 @@ const UserPlaylist = () => {
       });
     }
   }, [id]);
-
-  // get playlist owner image
-  function handleOwnerImage(id: string) {
-    spotify.getUser(id).then((user) => {
-      if (user.images) setOwnerImage(user.images[0].url);
-    });
-  }
 
   function handleUserPlaylist() {
     if (playlist) {
@@ -48,6 +51,7 @@ const UserPlaylist = () => {
 
   return (
     <div className="user-playlist">
+      {currentUser && <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />}
       {handleUserPlaylist()}
       <Collection data={playlist && playlist.tracks.items} />
     </div>

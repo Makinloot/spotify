@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getTokenFromUrl } from "./config/spotify";
-import { useSpotify } from "./context/SpotifyContext";
 import SpotifyWebApi from "spotify-web-api-js";
 
 // COMPONENTS
@@ -12,11 +11,11 @@ import Liked from "./pages/liked/Liked";
 import UserPlaylist from "./pages/saved-playlists/UserPlaylist";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
+import Search from "./pages/search/Search";
 
 export const spotify = new SpotifyWebApi();
 function App() {
   const [token, setToken] = useState<string>("");
-  const { currentUser } = useSpotify()
 
   useEffect(() => {
     const hash = getTokenFromUrl();
@@ -35,13 +34,13 @@ function App() {
     <div className="container">
       {token ? 
         <div className="app">
-          {currentUser && <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />}
           <Aside />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/liked" element={<Liked />} />
             <Route path="/playlist/:id" element={<UserPlaylist />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/search" element={<Search />} />
           </Routes>
         </div>
         :

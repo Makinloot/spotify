@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import testUser from "../../assets/liked-playlist.png";
 
+import SearchBar from "../search-bar/SearchBar";
 import "./Header.scss";
 
 const Header: React.FC<{
@@ -15,6 +16,7 @@ const Header: React.FC<{
   const [showHeader, setShowHeader] = useState<boolean>(false);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
 
   // set header background on scroll
   const handleHeader = () => {
@@ -50,7 +52,10 @@ const Header: React.FC<{
   }, []);
 
   return (
-    <header className={showHeader ? "header active" : "header"}>
+    <header className={showHeader ? "header active flex-row" : "header flex-row"}>
+      {search && <div className="header-search">
+        <SearchBar />
+      </div> }
       <div
         className="header-user flex-row"
         onClick={(e) => handleMenu(e)}
