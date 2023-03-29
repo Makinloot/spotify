@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import testUser from "../../assets/liked-playlist.png";
 
@@ -11,8 +11,9 @@ import "./Header.scss";
 const Header: React.FC<{
   username: string;
   userImg: string;
-  search?: boolean
-}> = ({ username, userImg, search }) => {
+  search?: boolean;
+  library?: boolean;
+}> = ({ username, userImg, search, library }) => {
   const [showHeader, setShowHeader] = useState<boolean>(false);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -39,8 +40,20 @@ const Header: React.FC<{
     else if (menuRef.current && e.target!.localName === "a")
       setTimeout(() => {
         setShowMenu(false);
-      }, 100);
+      }, 200);
   };
+
+  // for library page
+  function handleLibrary() {
+    return (
+      <div className="header-library flex-row">
+        <Link to="/library/playlist" className="active">playlists</Link>
+        <Link to="/library/podcast">podcasts</Link>
+        <Link to="/library/artists">artists</Link>
+        <Link to="/library/albums">albums</Link>
+      </div>
+    )
+  }
 
   useEffect(() => {
     window.addEventListener("scroll", handleHeader);
@@ -56,6 +69,7 @@ const Header: React.FC<{
       {search && <div className="header-search">
         <SearchBar />
       </div> }
+      {library && handleLibrary()}
       <div
         className="header-user flex-row"
         onClick={(e) => handleMenu(e)}

@@ -24,7 +24,6 @@ const Search = () => {
 
   useEffect(() => {
     spotify.getCategories({ limit: 50 }).then(categories => {
-      console.log(categories)
       setCategories(categories.categories.items)
     })
   }, [])

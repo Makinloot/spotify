@@ -6,15 +6,17 @@ import testImg from '../../assets/liked-playlist.png'
 import './Card.scss'
 
 const Card: React.FC<{
-  img: string
+  img?: string
   title: string
   undertext?: string
   radius?: boolean
   long?: boolean
-}> = ({ img, title, undertext, radius, long }) => {
+  songs?: string
+}> = ({ img, title, undertext, radius, long, songs }) => {
   return (
     <div className={long ? 'card long' : 'card'}>
       <img src={img || testImg} alt="" className={radius ? "card-img round box-shadow" : "card-img box-shadow"} />
+      {songs && <div className='card-songs'>{songs}</div> }
       <strong className="card-title">{title}</strong>
       <span className="card-undertext">{undertext}</span>
       <div className="card-hover flex-row box-shadow">

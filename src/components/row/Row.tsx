@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
-
 import "./Row.scss";
 
 import { Link } from "react-router-dom";
@@ -9,12 +6,13 @@ import Card from "../card/Card";
 const Row: React.FC<{
   artists?: SpotifyApi.ArtistObjectFull[] | null;
   data?: SpotifyApi.TrackObjectFull[] | null;
+  playlists?: SpotifyApi.PlaylistObjectSimplified[] | null;
+  likedSongs?: SpotifyApi.UsersSavedTracksResponse | null;
   title: string;
-}> = ({ data, title, artists }) => {
-  
+}> = ({ data, title, artists, playlists, likedSongs }) => {
   function handleRows() {
-    if(artists) {
-      return artists.map(artist => (
+    if (artists) {
+      return artists.map((artist) => (
         <Card
           key={artist.id}
           title={artist.name}
@@ -22,16 +20,38 @@ const Row: React.FC<{
           img={artist.images[0].url}
           radius
         />
-      ))
-    } else if(data) {
-      return data.map(item => (
+      ));
+    } else if (data) {
+      const uniqueKey = () => Math.random() * Math.random() * Math.random();
+      return data.map((item) => (
         <Card
-          key={item.id}
+          key={uniqueKey()}
           title={item.name}
           undertext={item.type}
           img={item.album.images[0].url}
         />
-      ))
+      ));
+    } else if (playlists && likedSongs) {
+      const playlistsCards = playlists.map((playlist) => (
+        <Card
+          key={playlist.id}
+          title={playlist.name}
+          undertext={`By ${playlist.owner.display_name}`}
+          img={playlist.images[0] && playlist.images[0].url}
+        />
+      ));
+      return (
+        <>
+          <div className="liked">
+            <Card
+              title="liked songs"
+              undertext={`${likedSongs.total} liked songs`}
+              songs={likedSongs.items.map((song) => song.track.name).join(" • ")}
+            />
+          </div>
+          {playlistsCards}
+        </>
+      );
     }
   }
 
@@ -43,7 +63,9 @@ const Row: React.FC<{
           show all
         </Link>
       </div>
-      <div className="rows flex-row">{handleRows()}</div>
+      <div className={playlists ? "rows playlists flex-row" : "rows flex-row"}>
+        {handleRows()}
+      </div>
     </div>
   );
 };

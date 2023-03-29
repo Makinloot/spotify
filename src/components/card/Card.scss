@@ -100,4 +100,14 @@
     color: $clr-black;
     opacity: 0;
   }
+
+  &-songs {
+    margin: 3rem 0;
+    height: 60px;
+    max-width: 430px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: $fs-small;
+    line-height: 1.5;
+  }
 }

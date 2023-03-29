@@ -22,7 +22,7 @@ const Navbar = () => {
         </Link>
       </li>
       <li className={location.pathname === '/library' ? 'navbar-item active' : 'navbar-item'}>
-        <Link to="#" className='flex-row'>
+        <Link to="/library/playlist" className='flex-row'>
           <FontAwesomeIcon icon={faBook} />
           <span>library</span>
         </Link>

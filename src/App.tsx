@@ -12,6 +12,7 @@ import UserPlaylist from "./pages/saved-playlists/UserPlaylist";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Search from "./pages/search/Search";
+import Library from "./pages/library/Library";
 
 export const spotify = new SpotifyWebApi();
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/playlist/:id" element={<UserPlaylist />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/library/:type" element={<Library />} />
           </Routes>
         </div>
         :
