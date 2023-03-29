@@ -1,58 +1,25 @@
+import { Link } from "react-router-dom";
+import LikedSongsRow from "./LikedSongRow";
+import ArtistsRows from "./ArtistRows";
+import SongsRows from "./SongRows";
+import AlbumRows from "./AlbumRows";
+
 import "./Row.scss";
 
-import { Link } from "react-router-dom";
-import Card from "../card/Card";
-
 const Row: React.FC<{
+  title: string;
   artists?: SpotifyApi.ArtistObjectFull[] | null;
-  data?: SpotifyApi.TrackObjectFull[] | null;
+  songs?: SpotifyApi.TrackObjectFull[] | null;
   playlists?: SpotifyApi.PlaylistObjectSimplified[] | null;
   likedSongs?: SpotifyApi.UsersSavedTracksResponse | null;
-  title: string;
-}> = ({ data, title, artists, playlists, likedSongs }) => {
+  albums?: SpotifyApi.SavedAlbumObject[] | null;
+  nowrap?: boolean;
+}> = ({ songs, title, artists, playlists, likedSongs, albums, nowrap }) => {
   function handleRows() {
-    if (artists) {
-      return artists.map((artist) => (
-        <Card
-          key={artist.id}
-          title={artist.name}
-          undertext={artist.type}
-          img={artist.images[0].url}
-          radius
-        />
-      ));
-    } else if (data) {
-      const uniqueKey = () => Math.random() * Math.random() * Math.random();
-      return data.map((item) => (
-        <Card
-          key={uniqueKey()}
-          title={item.name}
-          undertext={item.type}
-          img={item.album.images[0].url}
-        />
-      ));
-    } else if (playlists && likedSongs) {
-      const playlistsCards = playlists.map((playlist) => (
-        <Card
-          key={playlist.id}
-          title={playlist.name}
-          undertext={`By ${playlist.owner.display_name}`}
-          img={playlist.images[0] && playlist.images[0].url}
-        />
-      ));
-      return (
-        <>
-          <div className="liked">
-            <Card
-              title="liked songs"
-              undertext={`${likedSongs.total} liked songs`}
-              songs={likedSongs.items.map((song) => song.track.name).join(" • ")}
-            />
-          </div>
-          {playlistsCards}
-        </>
-      );
-    }
+    if (artists) return <ArtistsRows artists={artists} />;
+    else if (songs) return <SongsRows data={songs} />;
+    else if (playlists && likedSongs) return <LikedSongsRow likedSongs={likedSongs} playlists={playlists} />;
+    else if (albums) return <AlbumRows albums={albums} />;
   }
 
   return (
@@ -63,7 +30,7 @@ const Row: React.FC<{
           show all
         </Link>
       </div>
-      <div className={playlists ? "rows playlists flex-row" : "rows flex-row"}>
+      <div className={nowrap ? "rows nowrap flex-row" : "rows flex-row"}>
         {handleRows()}
       </div>
     </div>

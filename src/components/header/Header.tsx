@@ -13,7 +13,8 @@ const Header: React.FC<{
   userImg: string;
   search?: boolean;
   library?: boolean;
-}> = ({ username, userImg, search, library }) => {
+  active?: string;
+}> = ({ username, userImg, search, library, active }) => {
   const [showHeader, setShowHeader] = useState<boolean>(false);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -44,13 +45,13 @@ const Header: React.FC<{
   };
 
   // for library page
-  function handleLibrary() {
+  function handleLibrary(active: string) {
     return (
       <div className="header-library flex-row">
-        <Link to="/library/playlist" className="active">playlists</Link>
-        <Link to="/library/podcast">podcasts</Link>
-        <Link to="/library/artists">artists</Link>
-        <Link to="/library/albums">albums</Link>
+        <Link to="/library/playlists" className={active === 'playlists' ? 'active' : ""}>playlists</Link>
+        <Link to="/library/podcasts" className={active === 'podcasts' ? 'active' : ""}>podcasts</Link>
+        <Link to="/library/artists" className={active === 'artists' ? 'active' : ""}>artists</Link>
+        <Link to="/library/albums" className={active === 'albums' ? 'active' : ""}>albums</Link>
       </div>
     )
   }
@@ -69,7 +70,7 @@ const Header: React.FC<{
       {search && <div className="header-search">
         <SearchBar />
       </div> }
-      {library && handleLibrary()}
+      {(library && active) && handleLibrary(active)}
       <div
         className="header-user flex-row"
         onClick={(e) => handleMenu(e)}

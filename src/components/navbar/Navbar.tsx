@@ -21,8 +21,8 @@ const Navbar = () => {
           <span>search</span>
         </Link>
       </li>
-      <li className={location.pathname === '/library' ? 'navbar-item active' : 'navbar-item'}>
-        <Link to="/library/playlist" className='flex-row'>
+      <li className={location.pathname.startsWith('/library') ? 'navbar-item active' : 'navbar-item'}>
+        <Link to="/library/playlists" className='flex-row'>
           <FontAwesomeIcon icon={faBook} />
           <span>library</span>
         </Link>

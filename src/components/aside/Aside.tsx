@@ -1,9 +1,9 @@
-
 import { Link } from 'react-router-dom'
-import logo from '../../assets/logo.png'
+
 import Navbar from '../navbar/Navbar'
 import Playlists from '../saved-playlists/Playlists'
 
+import logo from '../../assets/logo.png'
 import './Aside.scss'
 
 const Aside = () => {

@@ -14,16 +14,22 @@ const Library = () => {
   const { currentUser } = useSpotify()
   const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[] | null>(null)
   const [likedTracks, setLikedTracks] = useState<SpotifyApi.UsersSavedTracksResponse | null>(null)
+  const [artists, setArtists] = useState<SpotifyApi.UsersFollowedArtistsResponse | null>(null)
+  const [albums, setAlbums] = useState<SpotifyApi.UsersSavedAlbumsResponse | null>(null)
 
   useEffect(() => {
     spotify.getUserPlaylists(currentUser.id).then(playlists => setPlaylists(playlists.items))
     spotify.getMySavedTracks().then(tracks => setLikedTracks(tracks))
+    spotify.getFollowedArtists().then(artists => setArtists(artists))
+    spotify.getMySavedAlbums().then(albums => setAlbums(albums))
   }, [type])
   
   return (
     <div className="library">
-      <Header username={currentUser.display_name} userImg={currentUser.images[0].url} library />
-      {type === 'playlist' && <Row playlists={playlists} likedSongs={likedTracks} title="playlists" />}
+      <Header username={currentUser.display_name} userImg={currentUser.images[0].url} library active={type} />
+      {type === 'playlists' && <Row playlists={playlists} likedSongs={likedTracks} title="playlists" nowrap />}
+      {type === 'artists' && <Row artists={artists?.artists.items} title='artists' nowrap />}
+      {type === 'albums' && <Row albums={albums?.items} title='albums' nowrap /> }
     </div>
   )
 }

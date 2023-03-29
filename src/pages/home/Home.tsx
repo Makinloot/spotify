@@ -12,9 +12,7 @@ const Home = () => {
   const [recentlyPlayed, setRecentlyPlayed] = useState<SpotifyApi.TrackObjectFull[] | null>(null)
 
   useEffect(() => {
-    spotify.getMyTopArtists().then(artists => {
-      setArtists(artists.items)
-    })
+    spotify.getMyTopArtists().then(artists => setArtists(artists.items))
     spotify.getMyRecentlyPlayedTracks().then(tracks => {
       const tracksArr: any[] = tracks.items.map(track => track.track)
       setRecentlyPlayed(tracksArr)
@@ -28,7 +26,7 @@ const Home = () => {
       {currentUser && <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />}
       <Welcome />
       <Row artists={artists && artists} title="your favourite artists" />
-      <Row data={recentlyPlayed && recentlyPlayed} title="recently played" />
+      <Row songs={recentlyPlayed && recentlyPlayed} title="recently played" />
     </div>
   )
 }

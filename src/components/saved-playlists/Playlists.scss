@@ -15,6 +15,10 @@
     a {
       display: block;
       padding: .5rem 0;
+
+      &.active {
+        color: $clr-white;
+      }
     }
   }
 }
