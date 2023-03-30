@@ -6,13 +6,15 @@ import "./MusicList.scss";
 import MusicListItem from "./MusicListItem";
 
 const MusicList: React.FC<{
+  header?: boolean;
   data?:
     | SpotifyApi.SavedTrackObject[]
     | SpotifyApi.PlaylistTrackObject[]
     | null;
-  header?: boolean;
   topTracks?: SpotifyApi.TrackObjectFull[] | null;
-}> = ({ data, topTracks, header }) => {
+  trackObjSimplified?: SpotifyApi.TrackObjectSimplified[]
+  
+}> = ({ data, topTracks, header, trackObjSimplified }) => {
   function handleData(data: any[]) {
     const mapData = data.map((item, i) => {
       const { id, album, name, artists, duration_ms } = item.track;
@@ -52,6 +54,23 @@ const MusicList: React.FC<{
     return topTracks;
   }
 
+  function handleTrackObjSimplified(data: SpotifyApi.TrackObjectSimplified[]) {
+    const mapData = data.map((item, i) => {
+      const { id, name, artists, duration_ms } = item
+      return (
+        <MusicListItem
+          key={id}
+          index={i}
+          name={name}
+          artistName={artists[0].name}
+          duration_ms={duration_ms}
+        />
+      )
+    })
+
+    return mapData
+  }
+
   return (
     <>
       <div className={header ? "music-list" : "music-list hidden"}>
@@ -67,6 +86,7 @@ const MusicList: React.FC<{
         </div>
         {data && <div className="music-list-wrapper">{handleData(data)}</div>}
         {topTracks && <div className="music-list-wrapper">{handleTopTracks(topTracks)}</div>}
+        {trackObjSimplified && <div className="music-list-wrapper">{handleTrackObjSimplified(trackObjSimplified)}</div> }
       </div>
     </>
   );

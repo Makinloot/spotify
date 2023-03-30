@@ -4,10 +4,10 @@ import defaultPlaylistImg from "../../assets/default-playlist.png";
 
 const MusicListItem: React.FC<{
   index: number;
-  img: string;
+  img?: string;
   name: string;
   artistName: string;
-  albumName: string;
+  albumName?: string;
   added_at?: string;
   duration_ms?: number;
 }> = ({
@@ -48,13 +48,13 @@ const MusicListItem: React.FC<{
         <FontAwesomeIcon icon={faPlay} />
       </div>
       <div className="title flex-row">
-        <img src={img || defaultPlaylistImg} />
+        {img && <img src={img} /> }
         <div className="name-band flex-col">
           <div>{name}</div>
           <div>{artistName}</div>
         </div>
       </div>
-      <div className="album">{albumName}</div>
+      {albumName && <div className="album">{albumName}</div> }
       {added_at && <div className="added">{handleDate(added_at)}</div>}
       {duration_ms && <div className="duration">{handleDuration(duration_ms)}</div> }
     </div>

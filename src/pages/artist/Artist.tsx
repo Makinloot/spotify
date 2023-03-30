@@ -29,6 +29,7 @@ const Artist = () => {
       spotify.getArtistAlbums(id).then(albums => setAlbums(albums.items))
       spotify.getArtistTopTracks(id, "US").then(tracks => setTopTracks(tracks.tracks))
       spotify.getArtistRelatedArtists(id).then(relatedArtists => setRelatedArtists(relatedArtists.artists))
+      window.scrollTo(0, 0)
     }
   }, [id])
 

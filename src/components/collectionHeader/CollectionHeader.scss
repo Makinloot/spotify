@@ -44,7 +44,7 @@
       text-transform: capitalize;
     }
     .collection-name {
-      font-size: calc($fs-big + 2rem);
+      font-size: $fs-big;
     }
 
     .collection-user-img {

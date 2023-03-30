@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { spotify } from '../../App'
 
 import Card from '../card/Card'
@@ -13,7 +14,11 @@ const Welcome = () => {
       const tracks = data.map(track => {
         const { name, album, id } = track
 
-        return <Card key={id} title={name} img={album.images[0].url} long />
+        return (
+          <Link to={`/album/${album.id}`}>
+            <Card key={id} title={name} img={album.images[0].url} long />
+          </Link>
+        )
       }).slice(0, 6)
 
       return tracks

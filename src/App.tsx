@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 // import { getTokenFromUrl } from "./config/spotify";
 import SpotifyWebApi from "spotify-web-api-js";
+import { useSpotify } from "./context/SpotifyContext";
 
 // COMPONENTS
 import Login from "./pages/login/Login";
@@ -14,7 +15,7 @@ import Profile from "./pages/profile/Profile";
 import Search from "./pages/search/Search";
 import Library from "./pages/library/Library";
 import Artist from "./pages/artist/Artist";
-import { useSpotify } from "./context/SpotifyContext";
+import Album from "./pages/album/Album";
 
 export const spotify = new SpotifyWebApi();
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/library/:type" element={<Library />} />
             <Route path="/artist/:id" element={<Artist />} />
+            <Route path="/album/:id" element={<Album />} />
           </Routes>
         </div>
         :

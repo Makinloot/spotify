@@ -12,6 +12,7 @@ interface CollectionProps {
   totalSongs?: number;
   followers?: string | number;
   following?: number;
+  date?: string;
 }
 
 const CollectionHeader: React.FC<CollectionProps> = ({
@@ -23,6 +24,7 @@ const CollectionHeader: React.FC<CollectionProps> = ({
   totalSongs,
   followers,
   following,
+  date
 }) => {
 
   return (
@@ -42,7 +44,8 @@ const CollectionHeader: React.FC<CollectionProps> = ({
               <img src={ownerImage} />
             </span>
           }
-          <span>{ownerName} </span>
+          {ownerName && <span>{ownerName}</span> }
+          {date && <span>{` • ${date}`}</span> }
           {/* <span>•</span> */}
           {followers && <span>{` • ${followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Followers`}</span> }
           {following && <span>{` • ${following} Following`}</span> }
