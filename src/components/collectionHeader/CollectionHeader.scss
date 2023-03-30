@@ -1,6 +1,7 @@
 @import '../../scss/assets/vars';
 
 .collection-header {
+  position: relative;
   display: flex;
   padding: 5rem 2rem 2rem;
   background: rgb(67, 74, 86);
@@ -9,6 +10,10 @@
     rgba(67, 74, 86, 0.7651435574229692) 44%,
     rgba(203, 40, 40, 0) 100%
   );
+
+  img {
+    object-fit: cover;
+  }
 
   .img {
     position: relative;

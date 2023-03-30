@@ -10,16 +10,39 @@ const Home = () => {
   const { currentUser } = useSpotify()
   const [ artists, setArtists ] = useState<SpotifyApi.ArtistObjectFull[] | null>(null)
   const [recentlyPlayed, setRecentlyPlayed] = useState<SpotifyApi.TrackObjectFull[] | null>(null)
+  const [seeds, setSeeds] = useState<{seed_tracks: string[]} | null>(null)
+  const [recommended, setRecommended] = useState<SpotifyApi.TrackObjectSimplified[] | null>(null)
+
+  // remove duplicate items from array
+  // function removeDuplicates(arr: any[]) {
+  //   const nonDuplicates = arr.filter((item, index) => arr.indexOf(item) === index)
+  //   return nonDuplicates
+  // }
 
   useEffect(() => {
     spotify.getMyTopArtists().then(artists => setArtists(artists.items))
     spotify.getMyRecentlyPlayedTracks().then(tracks => {
       const tracksArr: any[] = tracks.items.map(track => track.track)
+      const recentlyPlayedTracksSeeds = tracks.items.map(track => track.track.id).slice(0, 5)
       setRecentlyPlayed(tracksArr)
+      setSeeds({
+        seed_tracks: recentlyPlayedTracksSeeds,
+      })
     })
-    // TODO: get seeds for rec
-    // spotify.getRecommendations({seed_artists: ['4NHQUGzhtTLFvgF5SZesLK']}).then(rec => console.log(rec))
   }, [])
+
+  useEffect(() => {
+    if(seeds){
+      spotify.getRecommendations(seeds).then(recomendations => setRecommended(recomendations.tracks)).catch(err => console.log(err))
+    }
+  }, [seeds])
+
+  useEffect(() => {
+    if(artists){
+      
+    }
+    // console.log(artists)
+  }, [artists])
 
   return (
     <div className="home">
@@ -27,6 +50,7 @@ const Home = () => {
       <Welcome />
       <Row artists={artists && artists} title="your favourite artists" />
       <Row songs={recentlyPlayed && recentlyPlayed} title="recently played" />
+      <Row trackObjSimplified={recommended && recommended} title="recommended for today" />
     </div>
   )
 }

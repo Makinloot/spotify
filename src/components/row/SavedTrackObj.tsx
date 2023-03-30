@@ -1,11 +1,11 @@
 import Card from "../card/Card";
 
-const LikedSongsRow: React.FC<{
-  likedSongs: SpotifyApi.UsersSavedTracksResponse;
+const SavedTrackObj: React.FC<{
+  data: SpotifyApi.UsersSavedTracksResponse;
   playlists: SpotifyApi.PlaylistObjectSimplified[];
-}> = ({ likedSongs, playlists }) => {
+}> = ({ data, playlists }) => {
   
-  if (playlists && likedSongs) {
+  if (playlists && data) {
     const playlistsCards = playlists.map((playlist) => (
       <Card
         key={playlist.id}
@@ -20,8 +20,8 @@ const LikedSongsRow: React.FC<{
         <div className="liked">
           <Card
             title="liked songs"
-            undertext={`${likedSongs.total} liked songs`}
-            songs={likedSongs.items.map((song) => song.track.name).join(" • ")}
+            undertext={`${data.total} liked songs`}
+            songs={data.items.map((song) => song.track.name).join(" • ")}
           />
         </div>
         {playlistsCards}
@@ -32,4 +32,4 @@ const LikedSongsRow: React.FC<{
   return null;
 };
 
-export default LikedSongsRow;
+export default SavedTrackObj;

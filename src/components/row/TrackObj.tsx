@@ -1,6 +1,6 @@
 import Card from "../card/Card";
 
-const SongsRows: React.FC<{
+const TrackObj: React.FC<{
   data: SpotifyApi.TrackObjectFull[];
 }> = ({ data }): any => {
   const uniqueKey = () => Math.random() * Math.random() * Math.random();
@@ -20,4 +20,4 @@ const SongsRows: React.FC<{
   return null;
 };
 
-export default SongsRows;
+export default TrackObj;
