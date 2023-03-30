@@ -19,16 +19,6 @@ const AlbumObj: React.FC<{
         />
       </Link>
     ))
-  } else if (trackObj) {
-    return trackObj.map(track => (
-      <Link to={`/album/${track.album.id}`} key={track.id}>
-        <Card
-          title={track.name}
-          undertext={track.type}
-          img={track.album.images[0].url}
-        />
-      </Link>
-    ))
   } else if (albumObjSimplified) {
     return albumObjSimplified.map(album => (
       <Link to={`/album/${album.id}`} key={album.id}>

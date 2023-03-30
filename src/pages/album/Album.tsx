@@ -15,13 +15,6 @@ const Album = () => {
   const [artist, setArtist] = useState<string | null>(null)
   const [artistAlbums, setArtistAlbums] = useState<SpotifyApi.AlbumObjectSimplified[] | null>(null)
 
-
-    // remove duplicate items from array
-  function removeDuplicates(arr: any[]) {
-    const nonDuplicates = arr.filter((item, index) => arr.indexOf(item) === index)
-    return nonDuplicates
-  }
-
   useEffect(() => {
     if (id) {
       spotify.getAlbum(id).then((album) => {
@@ -33,12 +26,7 @@ const Album = () => {
   }, [id]);
 
   useEffect(() => {
-    if(artist) {
-      spotify.getArtistAlbums(artist, {limit: 7}).then(albums => {
-        console.log(albums)
-        setArtistAlbums(albums.items)
-      })
-    }
+    if(artist) spotify.getArtistAlbums(artist, {limit: 7}).then(albums => setArtistAlbums(albums.items))
   }, [artist])
 
   if (album) {

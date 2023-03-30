@@ -49,7 +49,7 @@ const Home = () => {
       {currentUser && <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />}
       <Welcome />
       <Row artists={artists && artists} title="your favourite artists" />
-      <Row songs={recentlyPlayed && recentlyPlayed} title="recently played" />
+      <Row trackObjSimplified={recentlyPlayed && recentlyPlayed} title="recently played" />
       <Row trackObjSimplified={recommended && recommended} title="recommended for today" />
     </div>
   )

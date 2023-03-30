@@ -11,7 +11,7 @@ const ArtistObj: React.FC<{
         <Card
           title={artist.name}
           undertext={artist.type}
-          img={artist.images[0].url}
+          img={artist.images[0]&& artist.images[0].url}
           radius
         />
       </Link>

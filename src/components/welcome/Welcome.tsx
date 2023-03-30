@@ -9,14 +9,15 @@ const Welcome = () => {
   
   const [data, setData] = useState<SpotifyApi.TrackObjectFull[] | null>(null)
 
+  const uniqueKey = () => Math.random() * Math.random() * Math.random()
+  
   function handleWelcomeRows() {
     if(data) {
       const tracks = data.map(track => {
-        const { name, album, id } = track
-
+        const { name, album } = track
         return (
           <Link to={`/album/${album.id}`}>
-            <Card key={id} title={name} img={album.images[0].url} long />
+            <Card key={uniqueKey()} title={name} img={album.images[0].url} long />
           </Link>
         )
       }).slice(0, 6)

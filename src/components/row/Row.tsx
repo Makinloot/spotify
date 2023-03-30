@@ -9,7 +9,7 @@ import "./Row.scss";
 const Row: React.FC<{
   title?: string;
   artists?: SpotifyApi.ArtistObjectFull[] | null;
-  songs?: SpotifyApi.TrackObjectFull[] | null;
+  trackObjFull?: SpotifyApi.TrackObjectFull[] | null;
   playlists?: SpotifyApi.PlaylistObjectSimplified[] | null;
   likedSongs?: SpotifyApi.UsersSavedTracksResponse | null;
   albums?: SpotifyApi.SavedAlbumObject[] | null;
@@ -18,7 +18,7 @@ const Row: React.FC<{
   albumObjSimplified?: SpotifyApi.AlbumObjectSimplified[];
   url?: string;
 }> = ({
-  songs,
+  trackObjFull,
   title,
   artists,
   playlists,
@@ -32,12 +32,12 @@ const Row: React.FC<{
   // return row depending on data type
   function handleRows() {
     if (artists) return <ArtistObj data={artists} />;
-    else if (songs) return <TrackObj data={songs} />;
+    else if (trackObjFull) return <TrackObj trackObjFull={trackObjFull} />;
+    else if (trackObjSimplified)
+      return <TrackObj trackObjSimplified={trackObjSimplified} />;
     else if (playlists && likedSongs)
       return <SavedTrackObj data={likedSongs} playlists={playlists} />;
     else if (albums) return <AlbumObj data={albums} />;
-    else if (trackObjSimplified)
-      return <AlbumObj trackObj={trackObjSimplified} />;
     else if (albumObjSimplified)
       return <AlbumObj albumObjSimplified={albumObjSimplified} />;
   }
