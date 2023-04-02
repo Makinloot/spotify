@@ -13,12 +13,6 @@ const Home = () => {
   const [seeds, setSeeds] = useState<{seed_tracks: string[]} | null>(null)
   const [recommended, setRecommended] = useState<SpotifyApi.TrackObjectSimplified[] | null>(null)
 
-  // remove duplicate items from array
-  // function removeDuplicates(arr: any[]) {
-  //   const nonDuplicates = arr.filter((item, index) => arr.indexOf(item) === index)
-  //   return nonDuplicates
-  // }
-
   useEffect(() => {
     spotify.getMyTopArtists().then(artists => setArtists(artists.items))
     spotify.getMyRecentlyPlayedTracks().then(tracks => {
@@ -39,7 +33,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />
+      <Header username={currentUser && currentUser.display_name} userImg={currentUser && currentUser.images[0].url} />
       <Welcome />
       <Row artists={artists && artists} title="your favourite artists" />
       <Row trackObjSimplified={recentlyPlayed && recentlyPlayed} title="recently played" />

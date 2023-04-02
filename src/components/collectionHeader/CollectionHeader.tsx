@@ -1,11 +1,10 @@
-import SpotifyWebApi from "spotify-web-api-js";
-
 import defaultPlaylistImg from "../../assets/default-playlist.png";
 import "./CollectionHeader.scss";
+import CollectionDiscography from "./CollectionDiscography";
 
 interface CollectionProps {
   image: string;
-  type: string;
+  type?: string;
   name: string;
   ownerImage?: string;
   ownerName?: string | undefined;
@@ -13,7 +12,7 @@ interface CollectionProps {
   followers?: string | number;
   following?: number;
   date?: string;
-  noBg?: boolean;
+  discography?: boolean;
 }
 
 const CollectionHeader: React.FC<CollectionProps> = ({
@@ -26,11 +25,11 @@ const CollectionHeader: React.FC<CollectionProps> = ({
   followers,
   following,
   date,
-  noBg
+  discography
 }) => {
 
   return (
-    <div className={noBg ? "collection-header no-bg" : "collection-header"}>
+    <div className={discography ? "collection-header discography" : "collection-header"}>
       {image &&
         <div className={type === 'profile' ? "img flex-row round" : "img flex-row"}>
           <img src={image || defaultPlaylistImg} />
@@ -39,6 +38,7 @@ const CollectionHeader: React.FC<CollectionProps> = ({
       <div className="collection-header-details flex-col">
         <div className="type">{type}</div>
         <div className="collection-name">{name}</div>
+        {discography && <CollectionDiscography date={date} totalSongs={totalSongs} type={type} />}
         <div className="collection-header-user-details flex-row">
           {ownerImage &&
             <span className="collection-user-img flex-row">

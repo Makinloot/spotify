@@ -11,23 +11,23 @@ const Discography = () => {
   const [albumTracks, setAlbumTracks] = useState<SpotifyApi.TrackObjectSimplified[] | any[]>([])
 
   function handleAlbums(data: any[]) {
-    const mapData = data.map((item, i) => {
+    const album = data.map((item, i) => {
       const { images, name, type, total_tracks, release_date, id } = item;
       return (
         <div className="discography-item" key={id}>
           <CollectionHeader
             image={images[0].url}
             name={name}
-            type={type}
             totalSongs={total_tracks}
             date={release_date.split('-')[0]}
-            noBg
+            discography
+            type={type}
           />
           <MusicList trackObjSimplified={albumTracks[i] && albumTracks[i]} />
         </div>
       )}).slice(0, 10)
 
-    return mapData
+    return album
   }
 
 
@@ -41,6 +41,8 @@ const Discography = () => {
         })
       })
     }
+
+    
   }, [id])
 
   return (

@@ -11,8 +11,55 @@
     rgba(203, 40, 40, 0) 100%
   );
 
-  &.no-bg {
+  &.discography {
     background: rgba(37, 37, 37, 0.596);
+
+    .img {
+      max-width: 136px;
+      height: 136px;
+    }
+
+    .type {
+      display: none;
+    }
+
+    .collection-header-user-details {
+      display: none;
+    }
+
+    .collection-discography-details {
+      margin: .5rem 0;
+      font-size: calc($fs-small - .1rem);
+      text-transform: capitalize;
+      color: $clr-whiteFaded;
+      font-family: $ff-regular;
+    }
+
+    .collection-buttons {
+      .play,
+      .like,
+      .more {
+        padding: .5rem;
+        font-size: $fs-small;
+        border-radius: 50%;
+        width: 32px;
+        cursor: pointer;
+      }
+
+      .play {
+        color: $clr-black;
+        background-color: $clr-white;
+
+        svg {
+          margin-left: .1rem;
+        }
+      }
+
+      .like {
+       color: $clr-green;
+       margin: 0 .5rem; 
+      }
+    }
   }
 
   img {
