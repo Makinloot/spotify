@@ -18,13 +18,13 @@ const SpotifyContext: React.FC<{children: ReactNode}> = ({ children }) => {
   const handleCurrentUser = async () => spotify.getMe().then(user => setCurrentUser(user))
 
   useEffect(() => {
-    handleCurrentUser()
     const hash = getTokenFromUrl();
     const _token = hash.access_token;
-
+    
     if (_token) {
       setToken(_token);
       spotify.setAccessToken(_token);
+      handleCurrentUser()
     }
 
     // clear browser url

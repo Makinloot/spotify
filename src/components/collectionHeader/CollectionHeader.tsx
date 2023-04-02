@@ -13,6 +13,7 @@ interface CollectionProps {
   followers?: string | number;
   following?: number;
   date?: string;
+  noBg?: boolean;
 }
 
 const CollectionHeader: React.FC<CollectionProps> = ({
@@ -24,12 +25,12 @@ const CollectionHeader: React.FC<CollectionProps> = ({
   totalSongs,
   followers,
   following,
-  date
+  date,
+  noBg
 }) => {
 
   return (
-    // <div className="collection-header" style={bg ? {backgroundImage: `url(${bg})`} : undefined}>
-    <div className="collection-header">
+    <div className={noBg ? "collection-header no-bg" : "collection-header"}>
       {image &&
         <div className={type === 'profile' ? "img flex-row round" : "img flex-row"}>
           <img src={image || defaultPlaylistImg} />

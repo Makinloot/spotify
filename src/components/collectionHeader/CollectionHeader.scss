@@ -11,6 +11,10 @@
     rgba(203, 40, 40, 0) 100%
   );
 
+  &.no-bg {
+    background: rgba(37, 37, 37, 0.596);
+  }
+
   img {
     object-fit: cover;
   }

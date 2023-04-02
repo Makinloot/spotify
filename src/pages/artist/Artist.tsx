@@ -32,9 +32,10 @@ const Artist = () => {
       window.scrollTo(0, 0)
     }
   }, [id])
-
+  
   if(artist) {
     const { images, name, followers } = artist;
+    console.log(artist)
     
     return (
       <div className="artist">
@@ -52,7 +53,7 @@ const Artist = () => {
           </div>
           <MusicList topTracks={topTracks} />
         </div>
-        {albums && <Row albumObjSimplified={albums.slice(0, 7)} title="discography" url="#" /> }
+        {albums && <Row albumObjSimplified={albums.slice(0, 7)} title="discography" url={`/artist/${artist.id}/discography`} /> }
         {relatedArtists && <Row artists={relatedArtists} title="fans also like" />}
       </div>
     )

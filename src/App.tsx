@@ -16,6 +16,7 @@ import Search from "./pages/search/Search";
 import Library from "./pages/library/Library";
 import Artist from "./pages/artist/Artist";
 import Album from "./pages/album/Album";
+import Discography from "./pages/discography/Discography";
 
 export const spotify = new SpotifyWebApi();
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/library/:type" element={<Library />} />
             <Route path="/artist/:id" element={<Artist />} />
+            <Route path="/artist/:id/discography" element={<Discography />} />
             <Route path="/album/:id" element={<Album />} />
           </Routes>
         </div>

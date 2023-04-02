@@ -37,16 +37,9 @@ const Home = () => {
     }
   }, [seeds])
 
-  useEffect(() => {
-    if(artists){
-      
-    }
-    // console.log(artists)
-  }, [artists])
-
   return (
     <div className="home">
-      {currentUser && <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />}
+      <Header username={currentUser.display_name} userImg={currentUser.images[0].url} />
       <Welcome />
       <Row artists={artists && artists} title="your favourite artists" />
       <Row trackObjSimplified={recentlyPlayed && recentlyPlayed} title="recently played" />
