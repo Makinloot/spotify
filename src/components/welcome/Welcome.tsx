@@ -17,7 +17,7 @@ const Welcome = () => {
         const { name, album } = track
         return (
           <Link to={`/album/${album.id}`} key={uniqueKey()}>
-            <Card title={name} img={album.images[0].url} long />
+            <Card title={name} img={album.images[0].url} uri={track.uri} long />
           </Link>
         )
       }).slice(0, 6)

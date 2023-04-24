@@ -15,17 +15,20 @@ const TrackObj: React.FC<{
           title={song.name}
           undertext={song.type}
           img={song.album.images[0].url}
+          uri={song.uri}
         />
       </Link>
     ));
     return songs;
   } else if(trackObjSimplified) {
+    console.log('LMAO', trackObjSimplified)
     return trackObjSimplified.map(track => (
       <Link to={`/album/${track.album.id}`} key={uniqueKey()}>
         <Card
           title={track.name}
           undertext={track.type}
           img={track.album.images[0].url}
+          uri={track.uri}
         />
       </Link>
     ))

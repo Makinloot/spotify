@@ -58,7 +58,6 @@ const MusicList: React.FC<{
 
   function handleTrackObjSimplified(data: SpotifyApi.TrackObjectSimplified[]) {
     const mapData = data.map((item, i) => {
-      console.log('first', item)
       const { id, name, artists, duration_ms, uri } = item
       return (
         <MusicListItem

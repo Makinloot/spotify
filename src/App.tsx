@@ -26,6 +26,7 @@ function App() {
   return (
     <div className="container">
       {token ? 
+      <>
         <div className="app">
           <Aside />
           <Routes>
@@ -41,6 +42,10 @@ function App() {
           </Routes>
           <Player accessToken={token} />
         </div>
+          <div className="footer" style={{padding: '4rem 0 7rem', textAlign: 'center', color: 'white'}}>
+            created by seed
+          </div>
+      </>
         :
         <Login />
       }

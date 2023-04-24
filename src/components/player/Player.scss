@@ -1,9 +1,49 @@
-@import '/src/scss/assets/vars';
+@import "/src/scss/assets/vars";
 
 .player {
   position: fixed;
   bottom: 0;
   z-index: 1000;
-  background-color: red;
   width: 100%;
+
+  // customize spotify-web-playback styles
+  .PlayerRSWP {
+    background-color: $clr-black !important;
+    border-top: 1px solid $clr-greyFaded;
+
+    * {
+      color: $clr-white !important;
+    }
+
+    ._SliderRSWP__q14q70 {
+      display: none !important;
+    }
+
+    .slider__track,
+    .volume__track {
+      background-color: $clr-whiteFaded !important;
+
+      &:hover {
+        .slider__range,
+        .volume__range {
+          background-color: $clr-green !important;
+        }
+
+        .slider__thumb,
+        .volume__thumb {
+          background-color: $clr-white !important;
+        }
+      }
+
+      .slider__range,
+      .volume__range {
+        background-color: $clr-white !important;
+      }
+
+      .slider__thumb,
+      .volume__thumb {
+        background-color: transparent !important;
+      }
+    }
+  }
 }

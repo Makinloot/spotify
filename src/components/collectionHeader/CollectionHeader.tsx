@@ -13,6 +13,7 @@ interface CollectionProps {
   following?: number;
   date?: string;
   discography?: boolean;
+  uri?: string;
 }
 
 const CollectionHeader: React.FC<CollectionProps> = ({
@@ -25,7 +26,8 @@ const CollectionHeader: React.FC<CollectionProps> = ({
   followers,
   following,
   date,
-  discography
+  discography,
+  uri
 }) => {
 
   return (
@@ -38,7 +40,7 @@ const CollectionHeader: React.FC<CollectionProps> = ({
       <div className="collection-header-details flex-col">
         <div className="type">{type}</div>
         <div className="collection-name">{name}</div>
-        {discography && <CollectionDiscography date={date} totalSongs={totalSongs} type={type} />}
+        {discography && <CollectionDiscography date={date} totalSongs={totalSongs} type={type} uri={uri} />}
         <div className="collection-header-user-details flex-row">
           {ownerImage &&
             <span className="collection-user-img flex-row">

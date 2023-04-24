@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Card from "../card/Card";
+import { useState } from "react";
 
 const SavedTrackObj: React.FC<{
   data: SpotifyApi.UsersSavedTracksResponse;
@@ -14,6 +15,7 @@ const SavedTrackObj: React.FC<{
           title={playlist.name}
           undertext={`By ${playlist.owner.display_name}`}
           img={playlist.images[0] && playlist.images[0].url}
+          uri={playlist.uri}
         />
       </Link>
     ));

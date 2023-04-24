@@ -12,6 +12,7 @@ const ArtistObj: React.FC<{
           title={artist.name}
           undertext={artist.type}
           img={artist.images[0]&& artist.images[0].url}
+          uri={artist.uri}
           radius
         />
       </Link>

@@ -12,7 +12,7 @@ const Discography = () => {
 
   function handleAlbums(data: any[]) {
     const album = data.map((item, i) => {
-      const { images, name, type, total_tracks, release_date, id } = item;
+      const { images, name, type, total_tracks, release_date, id, uri } = item;
       return (
         <div className="discography-item" key={id}>
           <CollectionHeader
@@ -22,6 +22,7 @@ const Discography = () => {
             date={release_date && release_date.split('-')[0]}
             discography
             type={type}
+            uri={uri}
           />
           <MusicList trackObjSimplified={albumTracks[i] && albumTracks[i]} />
         </div>

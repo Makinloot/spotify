@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '../card/Card'
 
@@ -7,15 +7,19 @@ const AlbumObj: React.FC<{
   trackObj?: SpotifyApi.TrackObjectSimplified[] | any[]
   albumObjSimplified?: SpotifyApi.AlbumObjectSimplified[]
   url?: string
-}> = ({ data, trackObj, albumObjSimplified, url }): any => {
+}> = ({ data, albumObjSimplified }): any => {
   
   if(data) {
     return data.map(album => (
-      <Link to={`/album/${album.album.id}`} key={album.album.id}>
+      <Link 
+        to={`/album/${album.album.id}`} 
+        key={album.album.id}
+      >
         <Card
           title={album.album.name}
           img={album.album.images[0].url}
           undertext={album.album.artists[0].name}
+          uri={album.album.uri}
         />
       </Link>
     ))
@@ -26,6 +30,7 @@ const AlbumObj: React.FC<{
           title={album.name}
           undertext={album.type}
           img={album.images[0].url}
+          uri={album.uri}
         />
       </Link>
     ))
