@@ -26,13 +26,13 @@ const Album = () => {
   }, [id]);
 
   useEffect(() => {
-    if(artist) spotify.getArtistAlbums(artist, {limit: 7}).then(albums => setArtistAlbums(albums.items))
+    if(artist) spotify.getArtistAlbums(artist).then(albums => setArtistAlbums(albums.items))
   }, [artist])
 
   if (album) {
     const { images, name, type, artists, release_date, tracks } = album
     return (
-      <div className="album">
+      <div className="album" style={{paddingBottom: '4rem'}}>
         <Header
           username={currentUser.display_name}
           userImg={currentUser.images[0].url}
@@ -50,6 +50,7 @@ const Album = () => {
           <Row
             albumObjSimplified={artistAlbums}
             title={`more by ${artists[0].name}`}
+            url={`/artist/${artists[0].id}/discography`}
           />
         }
       </div>

@@ -17,7 +17,7 @@ const MusicList: React.FC<{
 }> = ({ data, topTracks, header, trackObjSimplified }) => {
   function handleData(data: any[]) {
     const mapData = data.map((item, i) => {
-      const { id, album, name, artists, duration_ms } = item.track;
+      const { id, album, name, artists, duration_ms, uri } = item.track;
       return (
         <MusicListItem
           key={id}
@@ -28,6 +28,7 @@ const MusicList: React.FC<{
           albumName={album.name}
           added_at={item.added_at}
           duration_ms={duration_ms}
+          uri={uri}
         />
       );
     });
@@ -37,7 +38,7 @@ const MusicList: React.FC<{
 
   function handleTopTracks(data: SpotifyApi.TrackObjectFull[]) {
     const topTracks = data.map((item, i) => {
-      const { id, album, name, artists, duration_ms } = item;
+      const { id, album, name, artists, duration_ms, uri } = item;
       return (
         <MusicListItem
           key={id}
@@ -47,6 +48,7 @@ const MusicList: React.FC<{
           artistName={artists[0].name}
           name={name}
           duration_ms={duration_ms}
+          uri={uri}
         />
       );
     });
@@ -56,7 +58,8 @@ const MusicList: React.FC<{
 
   function handleTrackObjSimplified(data: SpotifyApi.TrackObjectSimplified[]) {
     const mapData = data.map((item, i) => {
-      const { id, name, artists, duration_ms } = item
+      console.log('first', item)
+      const { id, name, artists, duration_ms, uri } = item
       return (
         <MusicListItem
           key={id}
@@ -64,6 +67,7 @@ const MusicList: React.FC<{
           name={name}
           artistName={artists[0].name}
           duration_ms={duration_ms}
+          uri={uri}
         />
       )
     })

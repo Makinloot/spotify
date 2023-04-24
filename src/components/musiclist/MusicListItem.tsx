@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faClock } from "@fortawesome/free-solid-svg-icons";
 import defaultPlaylistImg from "../../assets/default-playlist.png";
+import { spotify } from "../../App";
+import { useSpotify } from "../../context/SpotifyContext";
 
 const MusicListItem: React.FC<{
   index: number;
@@ -10,6 +12,7 @@ const MusicListItem: React.FC<{
   albumName?: string;
   added_at?: string;
   duration_ms?: number;
+  uri: string
 }> = ({
   index,
   img,
@@ -18,7 +21,11 @@ const MusicListItem: React.FC<{
   albumName,
   added_at,
   duration_ms,
+  uri,
 }) => {
+
+  const { setTrackUri } = useSpotify()
+
   // convert date
   function handleDate(date: string) {
     const dateString = date;
@@ -42,7 +49,10 @@ const MusicListItem: React.FC<{
   };
 
   return (
-    <div className="music-list-item">
+    <div 
+      className="music-list-item"
+      onClick={() => setTrackUri(uri)}
+    >
       <div className="position flex-row">
         <div>{index + 1}</div>
         <FontAwesomeIcon icon={faPlay} />

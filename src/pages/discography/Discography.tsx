@@ -16,16 +16,16 @@ const Discography = () => {
       return (
         <div className="discography-item" key={id}>
           <CollectionHeader
-            image={images[0].url}
+            image={images && images[0].url}
             name={name}
             totalSongs={total_tracks}
-            date={release_date.split('-')[0]}
+            date={release_date && release_date.split('-')[0]}
             discography
             type={type}
           />
           <MusicList trackObjSimplified={albumTracks[i] && albumTracks[i]} />
         </div>
-      )}).slice(0, 10)
+      )})
 
     return album
   }
@@ -33,7 +33,7 @@ const Discography = () => {
 
   useEffect(() => {
     if(id){
-      spotify.getArtistAlbums(id, { limit: 50 }).then(albums => {
+      spotify.getArtistAlbums(id, { limit: 50, market: 'US' }).then(albums => {
         setAlbums(albums.items)
         // set every album tracks to state
         albums.items.map(album => {
@@ -41,8 +41,6 @@ const Discography = () => {
         })
       })
     }
-
-    
   }, [id])
 
   return (

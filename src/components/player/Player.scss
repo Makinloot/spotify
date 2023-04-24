@@ -1,0 +1,9 @@
+@import '/src/scss/assets/vars';
+
+.player {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  background-color: red;
+  width: 100%;
+}

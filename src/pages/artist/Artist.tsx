@@ -35,7 +35,7 @@ const Artist = () => {
   
   if(artist) {
     const { images, name, followers } = artist;
-    console.log(artist)
+    // console.log(artist)
     
     return (
       <div className="artist">

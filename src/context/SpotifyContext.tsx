@@ -13,9 +13,14 @@ const SpotifyContext: React.FC<{children: ReactNode}> = ({ children }) => {
   
   const [currentUser, setCurrentUser] = useState<SpotifyApi.CurrentUsersProfileResponse | null>(null)
   const [token, setToken] = useState<string>("");
+  const [trackUri, setTrackUri] = useState()
 
   // handle current user
   const handleCurrentUser = async () => spotify.getMe().then(user => setCurrentUser(user))
+  // handle play track
+  const handlePlayTrack = () => {
+
+  }
 
   useEffect(() => {
     const hash = getTokenFromUrl();
@@ -34,6 +39,8 @@ const SpotifyContext: React.FC<{children: ReactNode}> = ({ children }) => {
   const values = {
     currentUser,
     token,
+    trackUri,
+    setTrackUri,
   }
   
   return (

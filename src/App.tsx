@@ -17,6 +17,7 @@ import Library from "./pages/library/Library";
 import Artist from "./pages/artist/Artist";
 import Album from "./pages/album/Album";
 import Discography from "./pages/discography/Discography";
+import Player from "./components/player/Player";
 
 export const spotify = new SpotifyWebApi();
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/artist/:id/discography" element={<Discography />} />
             <Route path="/album/:id" element={<Album />} />
           </Routes>
+          <Player accessToken={token} />
         </div>
         :
         <Login />

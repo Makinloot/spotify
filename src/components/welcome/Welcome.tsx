@@ -16,8 +16,8 @@ const Welcome = () => {
       const tracks = data.map(track => {
         const { name, album } = track
         return (
-          <Link to={`/album/${album.id}`}>
-            <Card key={uniqueKey()} title={name} img={album.images[0].url} long />
+          <Link to={`/album/${album.id}`} key={uniqueKey()}>
+            <Card title={name} img={album.images[0].url} long />
           </Link>
         )
       }).slice(0, 6)

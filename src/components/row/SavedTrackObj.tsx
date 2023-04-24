@@ -8,7 +8,7 @@ const SavedTrackObj: React.FC<{
   
   if (playlists && data) {
     const playlistsCards = playlists.map((playlist) => (
-      <Link to={`/playlist/${playlist.id}`}>
+      <Link to={`/playlist/${playlist.id}`} key={playlist.id}>
         <Card
           key={playlist.id}
           title={playlist.name}
