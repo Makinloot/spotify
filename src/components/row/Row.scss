@@ -18,13 +18,13 @@
         background: #8e8ee5;
         background: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
         border-radius: 4px;
+
+        .card-element:hover {
+          background: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
+        }
         
         .card {
           padding: 20px;
-
-          &:hover {
-            background-color: initial;
-          }
           
           &-img {
             display: none;

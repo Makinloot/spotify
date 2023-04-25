@@ -1,5 +1,17 @@
 @import '/src/scss/assets/vars';
 
+.card-element {
+  position: relative;
+  &:hover {
+    background-color: $clr-darkGrey;
+
+    .card-hover {
+      opacity: 1;
+      transition: 1s;
+    }
+  }
+}
+
 .card {
   position: relative;
   display: block;
@@ -43,15 +55,6 @@
       transform: translateY(-50%);
     }
     
-  }
-
-  &:hover {
-    background-color: $clr-darkGrey;
-
-    .card-hover {
-      opacity: 1;
-      transition: 1s;
-    }
   }
 
   &-img {
@@ -100,6 +103,8 @@
     font-size: calc($fs-big - .4rem);
     color: $clr-black;
     opacity: 0;
+    transition: .3s;
+    cursor: pointer;
   }
 
   &-songs {

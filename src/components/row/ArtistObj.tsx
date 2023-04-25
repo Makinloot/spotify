@@ -1,21 +1,20 @@
-import { Link } from "react-router-dom";
 import Card from "../card/Card";
 
 const ArtistObj: React.FC<{
   data: SpotifyApi.ArtistObjectFull[];
 }> = ({ data }): any => {
-  
+
   if (data) {
     return data.map((artist) => (
-      <Link to={`/artist/${artist.id}`} key={artist.id}>
-        <Card
-          title={artist.name}
-          undertext={artist.type}
-          img={artist.images[0]&& artist.images[0].url}
-          uri={artist.uri}
-          radius
-        />
-      </Link>
+      <Card
+        key={artist.id}
+        title={artist.name}
+        undertext={artist.type}
+        img={artist.images[0] && artist.images[0].url}
+        url={`/artist/${artist.id}`}
+        uri={artist.uri}
+        radius
+      />
     ));
   }
 

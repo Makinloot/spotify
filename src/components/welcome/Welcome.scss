@@ -23,4 +23,16 @@
       grid-template-columns: repeat(2, 50%);
     }
   }
+
+  .card {
+
+    &-hover {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &-title {
+      width: 65% !important;
+    }
+  }
 }

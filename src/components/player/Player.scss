@@ -19,6 +19,11 @@
       display: none !important;
     }
 
+    // pause/play btn
+    .rswp__toggle:focus {
+      outline: 0px;
+    }
+
     .slider__track,
     .volume__track {
       background-color: $clr-whiteFaded !important;
