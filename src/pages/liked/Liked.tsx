@@ -17,7 +17,7 @@ const Liked = () => {
     spotify
       .getMySavedTracks({ limit: 50 })
       .then((track) => setData(track));
-    }, []);
+  }, []);
 
 
   return (

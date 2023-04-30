@@ -36,7 +36,9 @@ const Card: React.FC<{
       </Link>
       <div
         className="card-hover flex-row box-shadow"
-        onClick={() => setTrackUri(uri)}
+        onClick={() => {
+          setTrackUri(uri)
+        }}
       >
         <FontAwesomeIcon icon={faPlay} />
       </div>

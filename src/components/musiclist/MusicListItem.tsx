@@ -3,6 +3,7 @@ import { faPlay, faClock } from "@fortawesome/free-solid-svg-icons";
 import defaultPlaylistImg from "../../assets/default-playlist.png";
 import { spotify } from "../../App";
 import { useSpotify } from "../../context/SpotifyContext";
+import { useEffect } from "react";
 
 const MusicListItem: React.FC<{
   index: number;

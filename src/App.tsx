@@ -35,6 +35,7 @@ function App() {
             <Route path="/playlist/:id" element={<UserPlaylist />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/search/:query" element={<Search />} />
             <Route path="/library/:type" element={<Library />} />
             <Route path="/artist/:id" element={<Artist />} />
             <Route path="/artist/:id/discography" element={<Discography />} />

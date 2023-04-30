@@ -18,13 +18,13 @@ const Player = ({ accessToken }: {accessToken: string}) => {
   // automatically play tracks when clicking on them
   useEffect(() => {
     setPlay(true)
-    window.addEventListener('click', () => {
-      focusPlay()
-    })
+    // window.addEventListener('click', () => {
+    //   focusPlay()
+    // })
 
-    return () => {
-      window.removeEventListener('click', focusPlay)
-    }
+    // return () => {
+    //   window.removeEventListener('click', focusPlay)
+    // }
   }, [trackUri])
 
   return (

@@ -26,4 +26,77 @@
       grid-template-columns: repeat(4, 1fr);
     }
   }
+
+  &-results {
+
+    .types {
+      margin-bottom: 30px;
+      justify-content: flex-start !important;
+
+      li {
+        margin-left: .5rem;
+        font-size: $fs-small;
+        border-radius: 32px;
+        background-color: $clr-darkGrey;
+        padding: .5rem 1rem;
+        text-transform: capitalize;
+        cursor: pointer;
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+        &:hover {
+          background-color: $clr-greyFaded;
+        }
+      }
+    }
+
+    .results {
+      justify-content: flex-start !important;
+
+      h5 {
+        font-size: $fs-big;
+      }
+
+      &-top {
+        font-family: $ff-bold;
+        text-transform: capitalize;
+        flex: .5;
+
+        .wrapper {
+          padding: 1rem;
+          margin-top: 40px;
+          background-color: $clr-lightBlack;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $clr-darkGrey;
+          }
+        }
+  
+        img {
+          width: 92px;
+          height: 92px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+  
+        .title {
+          margin: 20px 0;
+          font-size: calc($fs-big + .5rem);
+        }
+  
+        .type {
+          font-size: $fs-small;
+        }
+      }
+
+      &-songs {
+        flex: 1;
+      }
+
+    }
+
+  }
 }
