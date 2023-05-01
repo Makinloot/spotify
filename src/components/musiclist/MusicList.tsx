@@ -82,7 +82,7 @@ const MusicList: React.FC<{
           <span>#</span>
           <span>title</span>
           <span>album</span>
-          <span>date added</span>
+          <span className="date-added">date added</span>
           <span>
             <FontAwesomeIcon icon={faClock} />
           </span>

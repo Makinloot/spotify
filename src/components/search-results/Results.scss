@@ -1,0 +1,127 @@
+@import "/src/scss/assets/vars";
+
+.search {
+  &-results {
+
+    // .types {
+    //   margin-bottom: 30px;
+    //   justify-content: flex-start !important;
+
+    //   li {
+    //     margin-left: 0.5rem;
+    //     font-size: $fs-small;
+    //     border-radius: 32px;
+    //     background-color: $clr-darkGrey;
+    //     text-transform: capitalize;
+    //     cursor: pointer;
+
+    //     &:first-of-type {
+    //       margin-left: 0;
+    //     }
+
+    //     &:hover {
+    //       background-color: $clr-greyFaded;
+    //     }
+
+    //     a {
+    //       display: block;
+    //       padding: 0.5rem 1rem;
+    //     }
+    //   }
+    // }
+
+    .results {
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+
+      h5 {
+        font-family: $ff-bold;
+        font-size: $fs-big;
+        text-transform: capitalize;
+      }
+
+      &-top {
+        font-family: $ff-bold;
+        text-transform: capitalize;
+        flex: 0.5;
+
+        .wrapper {
+          padding: 1rem;
+          margin-top: 40px;
+          background-color: $clr-lightBlack;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $clr-darkGrey;
+          }
+        }
+
+        img {
+          width: 92px;
+          height: 92px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .title {
+          margin: 20px 0;
+          font-size: calc($fs-big + 0.5rem);
+        }
+
+        .type {
+          font-size: $fs-small;
+        }
+      }
+
+      &-songs {
+        flex: 1;
+        height: 100%;
+        margin-left: 1rem;
+
+        .music-list {
+          padding: 0;
+
+          .music-list-wrapper {
+            padding: 0;
+            margin-top: 40px;
+
+            .position {
+              display: none;
+            }
+
+            .music-list-item {
+              padding: 0.4rem;
+              margin-top: 0px;
+              grid-template-columns: 90% 10%;
+
+              .album {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .music-list-headings {
+      grid-template-columns: 2% 38% 30% 15% !important;
+
+      .date-added {
+        display: none;
+      }
+    }
+  }
+
+  .row {
+    padding: 0;
+  }
+
+  &-artists,
+  &-albums {
+    margin: 2rem 0;
+
+    .row {
+      padding: 2rem 0;
+    }
+  }
+}
