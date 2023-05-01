@@ -1,0 +1,15 @@
+@import '/src/scss/assets/vars';
+
+.genre {
+
+  &-hero {
+    height: 40vh;
+    padding: 1rem;
+    justify-content: flex-start !important;
+    align-items: flex-end !important;
+    background-color: rgb(87, 87, 87);
+    font-size: 6rem;
+    font-family: $ff-bold;
+    text-transform: capitalize;
+  }
+}
