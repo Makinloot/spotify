@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Card: React.FC<{
   img?: string;
-  title: string;
+  title?: string;
   undertext?: string;
   radius?: boolean;
   long?: boolean;

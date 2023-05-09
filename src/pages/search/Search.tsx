@@ -18,14 +18,17 @@ const Search = () => {
 
   function handleCategories() {
     if (categories) {
-      const categoriesList = categories.map((category) => (
-        <BrowseCard
-          key={category.id}
-          title={category.name}
-          img={category.icons[0].url}
-          id={category.id}
-        />
-      ));
+      const genresToExclude = ['equal', 'decades', 'wellness', 'cooking & dining', 'kids & family', 'folk & acoustic', 'travel']
+      const categoriesList = categories
+        .filter(category => !genresToExclude.includes(category.name.toLocaleLowerCase()))
+        .map(filteredList => (
+          <BrowseCard
+            key={filteredList.id}
+            title={filteredList.name}
+            img={filteredList.icons[0].url}
+            id={filteredList.id}
+          />
+        ))
       return categoriesList;
     }
   }
@@ -35,14 +38,6 @@ const Search = () => {
     else if (params.type === "albums") return <ResultsAlbums albums={searchResults?.albums?.items} />;
     else if (params.type === "artists") return <ResultsArtists artists={searchResults?.artists?.items} />;
     else if (params.query && params.query.length > 3) return <Results searchResults={searchResults} />;
-    else {
-      return (
-        <div className="search-initial">
-          <h3 className="search-title">browse all</h3>
-          <div className="search-categories">{handleCategories()}</div>
-        </div>
-      );
-    }
   }
 
   useEffect(() => {
@@ -86,7 +81,12 @@ const Search = () => {
           </li>
         </ul>
       }
-      {handleResults()}
+      {handleResults() ||
+        <div className="search-initial">
+          <h3 className="search-title">browse all</h3>
+          <div className="search-categories">{handleCategories()}</div>
+        </div>
+      }
     </div>
   );
 };

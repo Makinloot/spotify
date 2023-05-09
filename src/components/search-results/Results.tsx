@@ -1,5 +1,6 @@
 import MusicList from "../../components/musiclist/MusicList";
 import Row from "../../components/row/Row";
+import Card from "../card/Card";
 import "./Results.scss";
 
 const Results: React.FC<{
@@ -9,11 +10,15 @@ const Results: React.FC<{
     <div className="search-results">
       <div className="results flex-row">
         <div className="results-top">
-          <h5>top result</h5>
+          <h5>top results</h5>
           <div className="wrapper">
-            <img src={searchResults?.artists?.items[0].images[0].url} />
-            <div className="title">{searchResults?.artists?.items[0].name}</div>
-            <div className="type">artist</div>
+            <Card
+              img={searchResults?.artists?.items[0].images[0].url}
+              title={searchResults?.artists?.items[0].name}
+              undertext={searchResults?.artists?.items[0].type}
+              uri={searchResults?.artists?.items[0].uri}
+              url={`/artist/${searchResults?.artists?.items[0].id}`}
+            />
           </div>
         </div>
 

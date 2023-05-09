@@ -49,7 +49,6 @@ const Header: React.FC<{
     return (
       <div className="header-library flex-row">
         <Link to="/library/playlists" className={active === 'playlists' ? 'active' : ""}>playlists</Link>
-        <Link to="/library/podcasts" className={active === 'podcasts' ? 'active' : ""}>podcasts</Link>
         <Link to="/library/artists" className={active === 'artists' ? 'active' : ""}>artists</Link>
         <Link to="/library/albums" className={active === 'albums' ? 'active' : ""}>albums</Link>
       </div>

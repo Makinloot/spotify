@@ -1,6 +1,6 @@
-export const initialState = {
-  user: null,
-}
+// export const initialState = {
+//   user: null,
+// }
 
 // const reducer = (state, action) => {
 
