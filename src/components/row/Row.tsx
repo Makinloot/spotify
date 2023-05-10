@@ -3,11 +3,6 @@ import SavedTrackObj from "./SavedTrackObj";
 import ArtistObj from "./ArtistObj";
 import TrackObj from "./TrackObj";
 import AlbumObj from "./AlbumObj";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from 'swiper'
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
 import "./Row.scss";
 
 const Row: React.FC<{

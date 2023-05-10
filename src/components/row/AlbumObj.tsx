@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from "react";
 import Card from "../card/Card";
 
 const AlbumObj: React.FC<{

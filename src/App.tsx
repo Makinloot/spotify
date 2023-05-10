@@ -9,7 +9,7 @@ import Login from "./pages/login/Login";
 import Header from "./components/header/Header";
 import Aside from "./components/aside/Aside";
 import Liked from "./pages/liked/Liked";
-import UserPlaylist from "./pages/saved-playlists/UserPlaylist";
+import UserPlaylist from "./pages/user-playlist/UserPlaylist";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Search from "./pages/search/Search";

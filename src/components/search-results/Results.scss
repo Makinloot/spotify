@@ -1,16 +1,29 @@
 @import "/src/scss/assets/vars";
 
 .search {
+
+  .types {
+    overflow: hidden !important;
+  }
+
   &-results {
 
     .results {
       justify-content: flex-start !important;
       align-items: flex-start !important;
 
+      @media (max-width: 480px) {
+        display: block;
+      }
+
       h5 {
         font-family: $ff-bold;
         font-size: $fs-big;
         text-transform: capitalize;
+
+        @media (max-width: 480px) {
+          display: none;
+        }
       }
 
       &-top {
@@ -58,7 +71,8 @@
               margin-top: 0px;
               grid-template-columns: 90% 10%;
 
-              .album {
+              .album,
+              .duration {
                 display: none;
               }
             }

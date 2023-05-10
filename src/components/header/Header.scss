@@ -32,6 +32,10 @@
       margin-left: 2rem;
     }
 
+    @media (max-width: 480px) {
+      margin-left: 1rem;
+    }
+
     a {
       padding: .7rem;
       margin-left: .2rem;

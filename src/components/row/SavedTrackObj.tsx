@@ -1,15 +1,9 @@
-import { Link } from "react-router-dom";
 import Card from "../card/Card";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import { useSpotify } from "../../context/SpotifyContext";
 
 const SavedTrackObj: React.FC<{
   data: SpotifyApi.UsersSavedTracksResponse;
   playlists: SpotifyApi.PlaylistObjectSimplified[];
 }> = ({ data, playlists }) => {
-  const { setTrackUri } = useSpotify();
 
   if (playlists && data) {
     const playlistsCards = playlists.map((playlist) => (

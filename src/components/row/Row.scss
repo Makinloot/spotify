@@ -3,6 +3,10 @@
 .row {
   padding: 2rem;
 
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+  }
+
   .rows {
     width: 100%;
     justify-content: flex-start;
@@ -61,11 +65,21 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .row {
     
     .rows {
       flex-wrap: nowrap;
+    }
+
+    &-title {
+      font-size: 1rem;
+    }
+
+    .show-more {
+      white-space: nowrap;
+      margin-left: 1rem;
+      font-size: calc($fs-small - .1rem);
     }
   }
 }

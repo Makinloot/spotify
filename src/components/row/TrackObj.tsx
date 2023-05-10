@@ -1,15 +1,10 @@
-import { Link } from "react-router-dom";
 import Card from "../card/Card";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import { useSpotify } from "../../context/SpotifyContext";
 
 const TrackObj: React.FC<{
   trackObjFull?: SpotifyApi.TrackObjectFull[];
   trackObjSimplified?: SpotifyApi.TrackObjectSimplified[] | any[];
   userSavedTracksResponse?: SpotifyApi.UsersSavedTracksResponse;
 }> = ({ trackObjFull, trackObjSimplified, userSavedTracksResponse }): any => {
-  const { setTrackUri } = useSpotify();
   const uniqueKey = () => Math.random() * Math.random() * Math.random();
 
   if (trackObjFull) {

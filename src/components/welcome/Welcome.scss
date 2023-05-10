@@ -39,6 +39,10 @@
 
 @media (max-width: 480px) {
   .welcome {
+    padding: 4rem 1rem 1rem;
 
+    &-rows {
+      margin-right: 1rem;
+    }
   }
 }
