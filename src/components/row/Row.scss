@@ -60,3 +60,12 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .row {
+    
+    .rows {
+      flex-wrap: nowrap;
+    }
+  }
+}

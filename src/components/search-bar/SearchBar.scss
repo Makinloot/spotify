@@ -11,7 +11,10 @@
     outline: none;
     background-color: transparent;
     width: 304px;
-    max-width: 100%;
+
+    @media (max-width: 385px) {
+      width: 100%;
+    }
   }
 
   input[type=submit] {

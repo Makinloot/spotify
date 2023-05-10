@@ -3,6 +3,32 @@
 .navbar {
   margin: 2rem 0 1rem;
 
+  // navbar menu for tablet/mobile resolution
+  &.bottom {
+    margin: 0;
+    justify-content: space-around !important;
+    width: 100%;
+    background-color: $clr-black;
+    @media (min-width: 769px) {
+      display: none;
+    }
+    li {
+      font-size: calc($fs-small - .2rem);
+      font-family: $ff-regular;
+      a {
+        flex-direction: column !important;
+      }
+      span {
+        margin: .4rem 0 0;
+      }
+    }
+
+    li:nth-child(4),
+    li:nth-child(5) {
+      display: none;
+    }
+  }
+
   &-item {
     font-size: $fs-small;
     font-family: $ff-bold;

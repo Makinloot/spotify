@@ -44,7 +44,6 @@ const Card: React.FC<{
       </div>
     </div>
 
-
   );
 };
 

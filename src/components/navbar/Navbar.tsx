@@ -4,11 +4,11 @@ import { faHouse, faMagnifyingGlass, faBook, faPlus, faHeart } from '@fortawesom
 
 import './Navbar.scss'
 
-const Navbar = () => {
+const Navbar: React.FC<{bottom?: boolean}> = ({ bottom }) => {
   const location = useLocation()
 
   return (
-    <nav className='navbar'>
+    <nav className={bottom ? 'navbar bottom flex-row' : 'navbar'}>
       <li className={location.pathname === '/' ? 'navbar-item active' : 'navbar-item'}>
         <Link to="/" className='flex-row'>
           <FontAwesomeIcon icon={faHouse} />

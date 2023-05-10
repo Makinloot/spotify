@@ -20,5 +20,9 @@
     height: 100px;
     transform: rotate(-45deg) translateX(-50%);
     object-fit: cover;
+
+    @media (max-width: 768px) {
+      right: -20%;
+    }
   }
 }

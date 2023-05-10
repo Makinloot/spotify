@@ -6,4 +6,11 @@
   display: grid;
   grid-template-columns: .2fr 1fr;
   color: $clr-white;
+
+  @media (max-width: 768px) {
+    display: block;
+    .aside {
+      display: none;
+    }
+  }
 }

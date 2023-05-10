@@ -124,3 +124,28 @@
     line-height: 1.5;
   }
 }
+
+@media (max-width: 480px) {
+  .card {
+
+
+    &.long {
+
+      .card-img {
+        max-width: 54px;
+      }
+
+      .card-title {
+        margin: 0 .5rem;
+      }
+    }
+
+    &-title {
+      font-size: calc($fs-small - .2rem);
+    }
+
+    &-hover {
+      display: none !important;
+    }
+  }
+}

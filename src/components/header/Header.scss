@@ -18,11 +18,19 @@
   }
 
   &-search {
-    margin-left: calc(312px + 2rem);
+    margin-left: calc(312px + 1rem);
+
+    @media (max-width: 1530px) {
+      margin-left: calc(280px + .5rem);
+    }
   }
 
   &-library {
     margin-left: calc(312px + 2rem);
+
+    @media (max-width: 768px) {
+      margin-left: 2rem;
+    }
 
     a {
       padding: .7rem;
@@ -131,6 +139,24 @@
       a {
         display: block;
         padding: .7rem 0 .7rem .4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+
+    &-user {
+      display: none !important;
+    }
+
+    &-search {
+      width: 100%;
+      margin: 0 1.5rem;
+
+      label {
+        justify-content: initial !important;
       }
     }
   }

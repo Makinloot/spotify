@@ -2,29 +2,14 @@ import SpotifyPlayer from "react-spotify-web-playback";
 import { useSpotify } from "../../context/SpotifyContext";
 import { useEffect, useState } from "react";
 import './Player.scss'
+import Navbar from "../navbar/Navbar";
 const Player = ({ accessToken }: {accessToken: string}) => {
 
   const { trackUri } = useSpotify()
   const [play, setPlay] = useState(false)
 
-  // focus play btn
-  function focusPlay() {
-    const playBtn: HTMLButtonElement | null = document.querySelector('.rswp__toggle')
-    if(playBtn){
-      playBtn.focus()
-    }
-  }
-
-  // automatically play tracks when clicking on them
   useEffect(() => {
     setPlay(true)
-    // window.addEventListener('click', () => {
-    //   focusPlay()
-    // })
-
-    // return () => {
-    //   window.removeEventListener('click', focusPlay)
-    // }
   }, [trackUri])
 
   return (
@@ -37,6 +22,9 @@ const Player = ({ accessToken }: {accessToken: string}) => {
         play={play}
         uris={trackUri ? [trackUri] : []}
       />
+      <div className="player-menu flex-row">
+        <Navbar bottom />
+      </div>
     </div>
   );
 };
