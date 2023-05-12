@@ -21,8 +21,18 @@ import Player from "./components/player/Player";
 import Genre from "./pages/genre/Genre";
 
 export const spotify = new SpotifyWebApi();
+
+
 function App() {
   const { token } = useSpotify()
+
+  // useEffect(() => {
+  //   localStorage.setItem('token', token)
+  // })
+
+  useEffect(() => {
+    
+  }, [token])
 
   return (
     <div className="container">

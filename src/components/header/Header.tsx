@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-
 import testUser from "../../assets/liked-playlist.png";
 
 import SearchBar from "../search-bar/SearchBar";
@@ -18,7 +17,6 @@ const Header: React.FC<{
   const [showHeader, setShowHeader] = useState<boolean>(false);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
 
   // set header background on scroll
   const handleHeader = () => {
@@ -91,16 +89,20 @@ const Header: React.FC<{
         <nav
           className={showMenu ? "header-user-menu active" : "header-user-menu"}
         >
-          <li>
+          {/* <li>
             <Link to="#">account</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/profile">profile</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="#">settings</Link>
-          </li>
-          <li>
+          </li> */}
+          <li onClick={() => {
+            window.localStorage.removeItem('token')
+            location.reload()
+          }
+          }>
             <Link to="#">log out</Link>
           </li>
         </nav>

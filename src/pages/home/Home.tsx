@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { spotify } from "../../App"
 import { useSpotify } from "../../context/SpotifyContext"
-
 import Row from "../../components/row/Row"
 import Welcome from "../../components/welcome/Welcome"
 import Header from "../../components/header/Header"
+import './Home.scss'
 
 const Home = () => {
   const { currentUser } = useSpotify()

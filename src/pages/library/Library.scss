@@ -3,22 +3,41 @@
 .library {
   // padding: 5rem 2rem 2rem;
   padding-top: 5rem;
+
 }
 
 @media (max-width: 768px) {
   .library {
 
     .row .rows {
-      flex-direction: column;
-      align-items: flex-start;
-  
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      grid-template-rows: 1fr !important;
+      
       .liked {
-        display: none;
+        background: transparent !important;
+
+        .card {
+          padding: 0;
+
+          &-img {
+            display: block;
+          }
+
+          &-songs {
+            display: none;
+          }
+
+          &-title {
+            font-size: $fs-small;
+          }
+        }
       }
   
       .card {
         padding: .5rem 0;
         display: grid;
+        grid-template-columns: 100px 1fr;
         grid-template-areas: 
           "img title"
           "img undertext"

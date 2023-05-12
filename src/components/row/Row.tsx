@@ -16,6 +16,7 @@ const Row: React.FC<{
   nowrap?: boolean;
   albumObjSimplified?: SpotifyApi.AlbumObjectSimplified[];
   url?: string;
+  flex?: boolean
 }> = ({
   trackObjFull,
   title,
@@ -26,7 +27,8 @@ const Row: React.FC<{
   trackObjSimplified,
   albumObjSimplified,
   nowrap,
-  url
+  url,
+  flex
 }) => {
   // return row depending on data type
   function handleRows() {
@@ -42,7 +44,7 @@ const Row: React.FC<{
   }
 
   return (
-    <div className="row">
+    <div className={flex ? 'row flex' : 'row'}>
       {title && (
         <div className="flex-row" style={{ justifyContent: "space-between" }}>
           <h3 className="row-title">{title}</h3>

@@ -1,0 +1,11 @@
+@import '/src/scss/assets/vars';
+
+.home {
+
+  .header {
+
+    &-user {
+      display: flex !important;
+    }
+  }
+}

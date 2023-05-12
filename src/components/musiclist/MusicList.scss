@@ -113,6 +113,14 @@
 
 @media (max-width: 768px) {
   .music-list {
+
+    & > hr {
+      display: none;
+    }
+
+    &-headings {
+      display: none !important;
+    }
     
     &-wrapper {
       padding: 0 0 3rem;
