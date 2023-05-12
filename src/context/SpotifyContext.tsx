@@ -27,9 +27,11 @@ const SpotifyContext: React.FC<{children: ReactNode}> = ({ children }) => {
     }
     
     let tokenFromStorage = window.localStorage.getItem('token')
-    spotify.setAccessToken(window.localStorage.getItem('token'))
-    if(tokenFromStorage) setToken(tokenFromStorage)
-    handleCurrentUser()
+    if(tokenFromStorage) {
+      setToken(tokenFromStorage)
+      spotify.setAccessToken(window.localStorage.getItem('token'))
+      handleCurrentUser()
+    }
 
     // clear browser url
     window.location.hash = "";
