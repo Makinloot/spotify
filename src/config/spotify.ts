@@ -1,7 +1,7 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
 // const redirectUri = "http://localhost:5173/";
-const redirectUri = "https://enchanting-cactus-801121.netlify.app";
+const redirectUri = "https://enchanting-cactus-801121.netlify.app/";
 const clientId = "025559af826c4fb49d52bce6b6b8b10d";
 
 const scopes = [
